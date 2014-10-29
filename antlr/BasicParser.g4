@@ -1,4 +1,4 @@
-parser grammar Basic;
+parser grammar BasicParser;
 
 options {
   tokenVocab=BasicLexer;
