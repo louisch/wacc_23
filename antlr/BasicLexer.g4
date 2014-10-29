@@ -12,8 +12,3 @@ CLOSE_PARENTHESES : ')' ;
 fragment DIGIT : '0'..'9' ; 
 
 INTEGER: DIGIT+ ;
-
-
-
-
-
