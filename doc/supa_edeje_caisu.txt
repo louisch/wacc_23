@@ -1,0 +1,9 @@
+"Whitespace is used in the WACC language to delimit keywords and variables."
+  -> but not expressions, e.g.:
+```
+  begin
+    begin
+      int x = 125end
+  end
+```
+
