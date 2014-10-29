@@ -1,0 +1,5 @@
+Code Style
+
+Spaces before semi-colons
+The rule we've settled on is that grammar rules have a single space before the semi-colon,
+while everything else doesn't have a space before the semi-colon, like normal.
