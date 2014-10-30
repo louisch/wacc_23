@@ -6,12 +6,12 @@ options {
 
 binaryOper : PLUS | MINUS | MULT | DIV | MOD |
     GT | GTE | LT | LTE | EQ | NEQ |
-    AND | OR;
+    AND | OR ;
 
 expr: expr binaryOper expr
-| INTEGER
-| OPEN_PARENTHESES expr CLOSE_PARENTHESES
-;
+  | INTEGER
+  | OPEN_PARENTHESES expr CLOSE_PARENTHESES
+  ;
 
 // EOF indicates that the program must consume to the end of the input.
 prog: (expr)*  EOF ;
