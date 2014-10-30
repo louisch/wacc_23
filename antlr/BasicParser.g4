@@ -25,6 +25,12 @@ stat : SKIP
     | WHILE expr DO stat DONE
     | BEGIN stat END
     | stat SEMICOLON stat
+    ;
+
+assignLhs : IDENT
+    | arrayElem
+    | pairElem
+    ;
 
 binaryOper : PLUS | MINUS | MULT | DIV | MOD
   | GT | GTE | LT | LTE | EQ | NEQ
@@ -53,7 +59,7 @@ expr : expr binaryOper expr
   | STR
   | PAIR
   | IDENT
-  | ARRAY_ELEMENT
+  | arrayElem
   | unaryOper expr
   ;
 
