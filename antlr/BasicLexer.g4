@@ -1,6 +1,6 @@
 lexer grammar BasicLexer;
 
-//operators
+// Binary operators
 PLUS: '+' ;
 MINUS: '-' ;
 MULT: '*' ;
@@ -15,11 +15,11 @@ NEQ: '!=' ;
 AND: '&&' ;
 OR: '||' ;
 
-//brackets
+// Brackets
 OPEN_PARENTHESES : '(' ;
 CLOSE_PARENTHESES : ')' ;
 
-//numbers
+// Numbers
 fragment DIGIT : '0'..'9' ;
 
 INTEGER: DIGIT+ ;
