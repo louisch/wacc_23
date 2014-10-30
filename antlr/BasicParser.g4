@@ -32,6 +32,13 @@ assignLhs : IDENT
     | pairElem
     ;
 
+assignRhs : expr
+    | arrayLiter
+    | NEWPAIR OPEN_PARENTHESES expr COMMA expr CLOSE_PARENTHESES
+    | pairElem
+    | CALL IDENT OPEN_PARENTHESES (argList)? CLOSE_PARENTHESES
+    ;
+
 binaryOper : PLUS | MINUS | MULT | DIV | MOD
   | GT | GTE | LT | LTE | EQ | NEQ
   | AND | OR
@@ -45,9 +52,9 @@ type : baseType | arrayType | pairType ;
 
 baseType : INT | BOOL | CHAR | STRING ;
 
-arrayType : type OPEN_BRACKET CLOSED_BRACKET ;
+arrayType : type OPEN_BRACKET CLOSE_BRACKET ;
 
-pairType : PAIR OPEN_PARENTHESES pairElemType COMMA pairElemType CLOSED_PARENTHESES ;
+pairType : PAIR OPEN_PARENTHESES pairElemType COMMA pairElemType CLOSE_PARENTHESES ;
 
 pairElemType : baseType | arrayType | PAIR ;
 
