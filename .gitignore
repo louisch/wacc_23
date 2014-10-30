@@ -7,6 +7,9 @@
 *.pdf
 
 #ignore junk files from latex output
+*.fls
+*.synctex.gz
+*.fdb_latexmk
 *.out
 *.log
 *.aux
