@@ -4,7 +4,9 @@ options {
   tokenVocab=BasicLexer;
 }
 
-binaryOper : PLUS | MINUS | MULT | DIV | MOD | GT | GTE | LT | LTE | EQ | NEQ | AND | OR;
+binaryOper : PLUS | MINUS | MULT | DIV | MOD |
+    GT | GTE | LT | LTE | EQ | NEQ |
+    AND | OR;
 
 expr: expr binaryOper expr
 | INTEGER
