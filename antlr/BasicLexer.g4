@@ -1,6 +1,6 @@
 lexer grammar BasicLexer;
 
-// Binary operators
+// Operators
 PLUS: '+' ;
 MINUS: '-' ;
 MULT: '*' ;
