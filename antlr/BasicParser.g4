@@ -6,7 +6,7 @@ options {
 
 program : BEGIN (func)* stat END ;
 
-func : type IDENT OPEN_PARENTHESES (paramList)? CLOSED_PARENTHESES ;
+func : type IDENT OPEN_PARENTHESES (paramList)? CLOSE_PARENTHESES ;
 
 paramList : param ( COMMA param )* ;
 
@@ -20,7 +20,7 @@ stat : SKIP
     | RET expr
     | EXIT expr
     | PRINT expr
-    | PRITNLN expr
+    | PRINTLN expr
     | IF expr THEN stat ELSE stat FI
     | WHILE expr DO stat DONE
     | BEGIN stat END
@@ -28,15 +28,15 @@ stat : SKIP
     ;
 
 assignLhs : IDENT
-    | arrayElem
+//    | arrayElem
     | pairElem
     ;
 
 assignRhs : expr
-    | arrayLiter
+//    | arrayLiter
     | NEWPAIR OPEN_PARENTHESES expr COMMA expr CLOSE_PARENTHESES
     | pairElem
-    | CALL IDENT OPEN_PARENTHESES (argList)? CLOSE_PARENTHESES
+//    | CALL IDENT OPEN_PARENTHESES (argList)? CLOSE_PARENTHESES
     ;
 
 binaryOper : PLUS | MINUS | MULT | DIV | MOD
@@ -44,7 +44,7 @@ binaryOper : PLUS | MINUS | MULT | DIV | MOD
   | AND | OR
   ;
 
-unaryOper : NOT | NEG | LEN | ORD | CHR ;
+unaryOper : NOT | MINUS | LEN | ORD | CHR ;
 
 pairElem : FST expr | SND expr ;
 
@@ -52,21 +52,21 @@ type : baseType | arrayType | pairType ;
 
 baseType : INT | BOOL | CHAR | STRING ;
 
-arrayType : type OPEN_BRACKET CLOSE_BRACKET ;
+arrayType : baseType OPEN_BRACKET CLOSE_BRACKET ;
 
 pairType : PAIR OPEN_PARENTHESES pairElemType COMMA pairElemType CLOSE_PARENTHESES ;
 
 pairElemType : baseType | arrayType | PAIR ;
 
 expr : expr binaryOper expr
-  | INTEGER
-  | OPEN_PARENTHESES expr CLOSED_PARENTHESES
-  | BOOL
-  | CHAR
-  | STR
-  | PAIR
+  | INT_LITER
+  | OPEN_PARENTHESES expr CLOSE_PARENTHESES
+  | BOOL_LITER
+  | CHAR_LITER
+  | STR_LITER
+  | PAIR_LITER
   | IDENT
-  | arrayElem
+//  | arrayElem
   | unaryOper expr
   ;
 
