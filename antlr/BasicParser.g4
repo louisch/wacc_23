@@ -28,23 +28,22 @@ stat : SKIP
     ;
 
 assignLhs : IDENT
-//    | arrayElem
+    | arrayElem
     | pairElem
     ;
 
 assignRhs : expr
-//    | arrayLiter
+    | arrayLiter
     | NEWPAIR OPEN_PARENTHESES expr COMMA expr CLOSE_PARENTHESES
     | pairElem
-//    | CALL IDENT OPEN_PARENTHESES (argList)? CLOSE_PARENTHESES
+    | CALL IDENT OPEN_PARENTHESES (argList)? CLOSE_PARENTHESES
     ;
 
-binaryOper : PLUS | MINUS | MULT | DIV | MOD
-  | GT | GTE | LT | LTE | EQ | NEQ
-  | AND | OR
-  ;
+argList : expr (COMMA expr)* ;
 
-unaryOper : NOT | MINUS | LEN | ORD | CHR ;
+pairElem : FST expr
+    | SND expr
+    ;
 
 pairElem : FST expr | SND expr ;
 
@@ -52,7 +51,7 @@ type : baseType | arrayType | pairType ;
 
 baseType : INT | BOOL | CHAR | STRING ;
 
-arrayType : baseType OPEN_BRACKET CLOSE_BRACKET ;
+arrayType : baseType OPEN_BRACKET CLOSE_BRACKET ; // baseType should be type
 
 pairType : PAIR OPEN_PARENTHESES pairElemType COMMA pairElemType CLOSE_PARENTHESES ;
 
@@ -66,11 +65,18 @@ expr : expr binaryOper expr
   | STR_LITER
   | PAIR_LITER
   | IDENT
-//  | arrayElem
+  | arrayElem
   | unaryOper expr
   ;
 
+unaryOper : NOT | MINUS | LEN | ORD | CHR ;
 
+binaryOper : PLUS | MINUS | MULT | DIV | MOD
+  | GT | GTE | LT | LTE | EQ | NEQ
+  | AND | OR
+  ;
 
-// EOF indicates that the program must consume to the end of the input.
-prog: (expr)*  EOF ;
+arrayElem : IDENT OPEN_BRACKET expr CLOSE_BRACKET ;
+
+arrayLiter : OPEN_BRACKET (expr (COMMA expr)*)? CLOSE_BRACKET ;
+
