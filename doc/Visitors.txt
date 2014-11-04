@@ -1,0 +1,7 @@
+Visitors
+
+Methods of the base visitor that we are going to override:
+	visitFunc
+	visitParamList? (we may not need to override the default)
+	visitParam
+	
