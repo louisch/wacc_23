@@ -69,8 +69,3 @@ expr : expr binaryOper expr
 //  | arrayElem
   | unaryOper expr
   ;
-
-
-
-// EOF indicates that the program must consume to the end of the input.
-prog: (expr)*  EOF ;
