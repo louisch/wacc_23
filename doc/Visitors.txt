@@ -1,0 +1,14 @@
+Visitors
+
+Methods of the base visitor that we are going to override:
+	visitFunc
+	visitParamList? (we may not need to override the default)
+	visitParam
+	visitDeclaration
+	visitAssignment
+	visitAssignLhs (probably needs to return info to the caller)
+	visitAssignRhs
+	visitArgList (check that args match required type/number etc. --> pass this to visitAssignRhs)
+	visitPairElem
+	visitExpr
+	visitArrayLiter

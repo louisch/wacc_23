@@ -13,19 +13,19 @@ paramList : param ( COMMA param )* ;
 param : type IDENT ;
 
 stat : SKIP
-    | type IDENT ASSIGN assignRhs
-    | assignLhs ASSIGN  assignLhs
-    | READ assignLhs
-    | FREE expr
-    | RET expr
-    | EXIT expr
-    | PRINT expr
-    | PRINTLN expr
-    | IF expr THEN stat ELSE stat FI
-    | WHILE expr DO stat DONE
-    | BEGIN stat END
-    | stat SEMICOLON stat
-    ;
+  | type IDENT ASSIGN assignRhs  # declaration
+  | assignLhs ASSIGN  assignLhs  # assignment
+  | READ assignLhs
+  | FREE expr
+  | RET expr
+  | EXIT expr
+  | PRINT expr
+  | PRINTLN expr
+  | IF expr THEN stat ELSE stat FI
+  | WHILE expr DO stat DONE
+  | BEGIN stat END
+  | stat SEMICOLON stat
+  ;
 
 assignLhs : IDENT
     | arrayElem
