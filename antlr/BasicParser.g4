@@ -75,6 +75,6 @@ binaryOper : PLUS | MINUS | MULT | DIV | MOD
   | AND | OR
   ;
 
-arrayElem : IDENT OPEN_BRACKET expr CLOSE_BRACKET ;
+arrayElem : IDENT (OPEN_BRACKET expr CLOSE_BRACKET)+ ;
 
 arrayLiter : OPEN_BRACKET (expr (COMMA expr)*)? CLOSE_BRACKET ;
