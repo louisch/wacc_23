@@ -52,7 +52,10 @@ type : baseType | arrayType | pairType ;
 
 baseType : INT | BOOL | CHAR | STRING ;
 
-arrayType : baseType OPEN_BRACKET CLOSE_BRACKET ;
+arrayType : baseType OPEN_BRACKET CLOSE_BRACKET
+          | arrayType OPEN_BRACKET CLOSE_BRACKET
+          | pairType OPEN_BRACKET CLOSE_BRACKET
+          ;
 
 pairType : PAIR OPEN_PARENTHESES pairElemType COMMA pairElemType CLOSE_PARENTHESES ;
 
