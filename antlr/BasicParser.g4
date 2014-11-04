@@ -41,10 +41,6 @@ assignRhs : expr
 
 argList : expr (COMMA expr)* ;
 
-pairElem : FST expr
-    | SND expr
-    ;
-
 pairElem : FST expr | SND expr ;
 
 type : baseType | arrayType | pairType ;
