@@ -13,8 +13,8 @@ echo Compiling the lexer..
 java -jar $BASEDIR/../lib/antlr-4.4-complete.jar $BASEDIR/$LEXER_FILE -o $TARGET_DIR -no-listener -visitor -Werror -package antlr
 
 if [ $? -ne 0 ]
-then 
-	exit 1
+then
+	  exit 1
 fi
 
 echo Compiling the parser..
