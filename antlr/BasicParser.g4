@@ -14,7 +14,7 @@ param : type IDENT ;
 
 stat : SKIP
   | type IDENT ASSIGN assignRhs  # declaration
-  | assignLhs ASSIGN  assignLhs  # assignment
+  | assignLhs ASSIGN  assignRhs  # assignment
   | READ assignLhs
   | FREE expr
   | RET expr
