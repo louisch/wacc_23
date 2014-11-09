@@ -2,6 +2,9 @@
 
 ## Classes
 
+### Compiler (replaces SemanticChecker)
+Someone rename SemanticChecker to Compiler please.
+
 ### ASTAssembler (Class)
 - ASTAssembler(ParseTree)
   Constructor takes given ParseTree and internally constructs
