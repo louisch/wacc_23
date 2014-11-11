@@ -8,7 +8,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.io.IOException;
 
-public class SemanticChecker {
+public class Compiler {
     /**
      * @param args - Arguments passed from the command line
      */
