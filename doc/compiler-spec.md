@@ -13,7 +13,7 @@ Someone rename SemanticChecker to Compiler please.
   AST.
 
 ### AST (Interface)
-ASTs for Statements, Expressions etc. need to be written. Should implement this
+ASTs for Statements, Expressions etc. need to be written to implement this
 interface.
 - Check()
   Check method checks that the abstract syntax tree is correct.
