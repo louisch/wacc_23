@@ -9,6 +9,13 @@ import wacc23.ast.ProgramAST;
 
 import java.io.IOException;
 
+/**
+ * The entry point for the compiler.
+ *
+ * The main method of this class can be used to compile the program from
+ * standard input.
+ * TODO: Allow program to be specified as a filename.
+ */
 public class Compiler {
     /**
      * @param args - Arguments passed from the command line
