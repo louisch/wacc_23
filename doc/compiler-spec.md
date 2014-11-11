@@ -20,4 +20,4 @@ interface.
   Throws SemanticErrorException if syntax is incorrect.
 
 ### SemanticErrorException (Class)
-Returns exit code of 200
+Exits program, with an exit code of 200
