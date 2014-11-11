@@ -12,9 +12,10 @@ Someone rename SemanticChecker to Compiler please.
   Constructor takes given ParseTree and internally constructs
   AST.
 
-### AST (Interface)
-ASTs for Statements, Expressions etc. need to be written to implement this
-interface.
+### AST (Abstract class)
+Base AST class will extend BasicParserBaseVisitor<AST>. This way, ANTLR's
+methods can be used.
+ASTs for Statements, Expressions etc. need to be written to extend AST.
 Any compound ASTs (ASTs which have other ASTs nested in them) should have fields
 of the nested ASTs in them.
 - Check()
