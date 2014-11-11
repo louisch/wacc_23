@@ -5,12 +5,7 @@
 ### Compiler (replaces SemanticChecker)
 Someone rename SemanticChecker to Compiler please.
 - Creates ParseTree from System.in, using ANTLR's generated classes
-- Creates ASTAssembler object, passing the ParseTree to its constructor.
-
-### ASTAssembler (Class)
-- ASTAssembler(ParseTree)
-  Constructor takes given ParseTree and internally constructs
-  AST.
+- Creates ProgramAST object, which can then visit the parseTree.
 
 ### AST (Abstract class)
 Base AST class will extend BasicParserBaseVisitor<AST>. This way, ANTLR's
