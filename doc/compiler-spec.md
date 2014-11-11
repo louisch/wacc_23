@@ -4,6 +4,8 @@
 
 ### Compiler (replaces SemanticChecker)
 Someone rename SemanticChecker to Compiler please.
+- Creates ParseTree from System.in, using ANTLR's generated classes
+- Creates ASTAssembler object, passing the ParseTree to its constructor.
 
 ### ASTAssembler (Class)
 - ASTAssembler(ParseTree)
