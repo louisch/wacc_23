@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 LEXER_FILE=BasicLexer.g4
 PARSER_FILE=BasicParser.g4
