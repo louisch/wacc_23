@@ -32,6 +32,9 @@ public class ProgramAST extends AST {
 
     @Override
     public void check() {
-        // TODO: check the program for semantic correctness
+        for (AST functionAST : funcTable.values()) {
+            functionAST.check();
+        }
+        statement.check();
     }
 }
