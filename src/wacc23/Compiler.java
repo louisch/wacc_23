@@ -1,7 +1,7 @@
 package wacc23;
 
-import antlr.BasicParser;
-import antlr.BasicLexer;
+import antlr.WaccParser;
+import antlr.WaccLexer;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -22,9 +22,9 @@ public class Compiler {
      */
     public static void main(String[] args) throws IOException {
         ANTLRInputStream input = new ANTLRInputStream(System.in);
-        BasicLexer lexer = new BasicLexer(input);
+        WaccLexer lexer = new WaccLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
-        BasicParser parser = new BasicParser(tokens);
+        WaccParser parser = new WaccParser(tokens);
         ParseTree parseTree = parser.program();
 
         ProgramAST program = new ProgramAST();

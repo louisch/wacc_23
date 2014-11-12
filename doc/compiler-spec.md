@@ -8,7 +8,7 @@ Someone rename SemanticChecker to Compiler please.
 - Creates ProgramAST object, which can then visit the parseTree.
 
 ### AST (Abstract class)
-Base AST class will extend BasicParserBaseVisitor<AST>. This way, ANTLR's
+Base AST class will extend WaccParserBaseVisitor<AST>. This way, ANTLR's
 methods can be used.
 ASTs for Statements, Expressions etc. need to be written to extend AST.
 Any compound ASTs (ASTs which have other ASTs nested in them) should have fields

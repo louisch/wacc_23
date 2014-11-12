@@ -1,6 +1,6 @@
 package wacc23.ast;
 
-import antlr.BasicParser;
+import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
 
 public class ProgramAST extends AST {
@@ -8,7 +8,7 @@ public class ProgramAST extends AST {
     // TODO: Add fields corresponding to branches of the program.
 
     @Override
-    public AST visitProgram(@NotNull BasicParser.ProgramContext ctx) {
+    public AST visitProgram(@NotNull WaccParser.ProgramContext ctx) {
         // TODO: Visit the branches of the program
         return super.visitProgram(ctx);
     }
