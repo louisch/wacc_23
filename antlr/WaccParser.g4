@@ -56,23 +56,20 @@ pairType : PAIR OPEN_PARENTHESES pairElemType COMMA pairElemType CLOSE_PARENTHES
 
 pairElemType : baseType | arrayType | PAIR ;
 
-expr : expr binaryOper expr
-  | INT_LITER
-  | OPEN_PARENTHESES expr CLOSE_PARENTHESES
+expr : INT_LITER
   | BOOL_LITER
   | CHAR_LITER
   | STR_LITER
   | PAIR_LITER
   | IDENT
   | arrayElem
-  | unaryOper expr
-  ;
-
-unaryOper : NOT | MINUS | LEN | ORD | CHR ;
-
-binaryOper : PLUS | MINUS | MULT | DIV | MOD
-  | GT | GTE | LT | LTE | EQ | NEQ
-  | AND | OR
+  | expr BINARY_OPER_MULT expr
+  | expr BINARY_OPER_ADD expr
+  | expr BINARY_OPER_GT expr
+  | expr BINARY_OPER_EQ expr
+  | expr BINARY_OPER_AND expr
+  | UNARY_OPER expr
+  | OPEN_PARENTHESES expr CLOSE_PARENTHESES
   ;
 
 arrayElem : IDENT OPEN_BRACKET expr CLOSE_BRACKET ;

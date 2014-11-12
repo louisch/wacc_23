@@ -1,24 +1,32 @@
 lexer grammar WaccLexer;
 
 // Binary Operators
-PLUS : '+' ;
-MINUS : '-' ; // also the unary minus
-MULT : '*' ;
-DIV : '/' ;
-MOD : '%' ;
-GT : '>' ;
-GTE : '>=' ;
-LT : '<' ;
-LTE : '<=' ;
-EQ : '==' ;
-NEQ : '!=' ;
-AND : '&&' ;
-OR : '||' ;
-// Unary OP
-NOT : '!' ;
-LEN : 'len' ;
-ORD : 'ord' ;
-CHR : 'chr' ;
+fragment PLUS : '+' ; // also unary plus
+fragment MINUS : '-' ; // also the unary minus
+fragment MULT : '*' ;
+fragment DIV : '/' ;
+fragment MOD : '%' ;
+fragment GT : '>' ;
+fragment GTE : '>=' ;
+fragment LT : '<' ;
+fragment LTE : '<=' ;
+fragment EQ : '==' ;
+fragment NEQ : '!=' ;
+fragment AND : '&&' ;
+fragment OR : '||' ;
+// Grouped
+BINARY_OPER_MULT :  MULT | DIV | MOD ;
+BINARY_OPER_ADD : PLUS | MINUS ;
+BINARY_OPER_GT : GT | GTE | LT | LTE ;
+BINARY_OPER_EQ : EQ | NEQ ;
+BINARY_OPER_AND : AND | OR ;
+// Pure Unary OP
+fragment NOT : '!' ;
+fragment LEN : 'len' ;
+fragment ORD : 'ord' ;
+fragment CHR : 'chr' ;
+// Grouped
+UNARY_OPER : NOT | PLUS | MINUS | LEN | ORD | CHR ;
 
 // scope statements
 BEGIN : 'begin' ;
