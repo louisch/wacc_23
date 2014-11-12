@@ -22,7 +22,8 @@ public class ProgramAST extends AST {
     @Override
     public AST visitProgram(@NotNull WaccParser.ProgramContext ctx) {
         for (WaccParser.FuncContext funcCtx : ctx.func()) {
-            funcTable.put(funcCtx.IDENT().getText(), visit(funcCtx));
+            FunctionAST functionAST = new FunctionAST();
+            funcTable.put(funcCtx.IDENT().getText(), functionAST.visit(funcCtx));
         }
         statement = visit(ctx.stat());
         return this;
