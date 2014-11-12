@@ -3,14 +3,20 @@ package wacc23.ast;
 import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
 
+import java.util.Map;
+
 public class ProgramAST extends AST {
 
-    // TODO: Add fields corresponding to branches of the program.
+    private Map<String, AST> funcTable;
+    private AST statement;
 
     @Override
     public AST visitProgram(@NotNull WaccParser.ProgramContext ctx) {
-        // TODO: Visit the branches of the program
-        return super.visitProgram(ctx);
+        for (WaccParser.FuncContext funcCtx : ctx.func()) {
+            funcTable.put(funcCtx.IDENT().getText(), visit(funcCtx));
+        }
+        statement = visit(ctx.stat());
+        return this;
     }
 
     @Override
