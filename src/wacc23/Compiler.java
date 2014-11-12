@@ -17,14 +17,18 @@ import java.io.IOException;
  * TODO: Allow program to be specified as a filename.
  */
 public class Compiler {
+
+    public static WaccParser createParseTree(ANTLRInputStream inputStream) {
+        WaccLexer lexer = new WaccLexer(inputStream);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        return new WaccParser(tokens);
+    }
+
     /**
      * @param args - Arguments passed from the command line
      */
     public static void main(String[] args) throws IOException {
-        ANTLRInputStream input = new ANTLRInputStream(System.in);
-        WaccLexer lexer = new WaccLexer(input);
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        WaccParser parser = new WaccParser(tokens);
+        WaccParser parser = createParseTree(new ANTLRInputStream(System.in));
         ParseTree parseTree = parser.program();
 
         ProgramAST program = new ProgramAST();
