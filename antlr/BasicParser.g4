@@ -6,7 +6,7 @@ options {
 
 program : BEGIN (func)* stat END ;
 
-func : type IDENT OPEN_PARENTHESES (paramList)? CLOSE_PARENTHESES ;
+func : type IDENT OPEN_PARENTHESES (paramList)? CLOSE_PARENTHESES IS stat END;
 
 paramList : param ( COMMA param )* ;
 
