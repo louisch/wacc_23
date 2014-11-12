@@ -24,7 +24,7 @@ public class ProgramASTTest {
     }
 
     @Test
-    public void testProgramASTFunctions() {
+    public void testProgramASTReadsFunctionsCorrectly() {
         String funcName = "foo";
         String inputProgram = "begin\n" +
                               "int " + funcName + " (int x) is\n" +
