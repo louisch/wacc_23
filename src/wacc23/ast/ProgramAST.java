@@ -21,7 +21,7 @@ public class ProgramAST extends AST {
      * Constructs a ProgramAST with an empty function table.
      */
     public ProgramAST() {
-        this.funcTable = new HashMap<String, AST>();
+        this(new HashMap<String, AST>());
     }
 
     /**
