@@ -71,7 +71,6 @@ CLOSE_BRACKET : ']' ;
 
 // integer stuffs
 fragment DIGIT : [0-9] ;
-fragment INT_SIGN : MINUS | PLUS ;
 
 // char stuffs
 fragment LOWER : [a-z] ;
@@ -91,7 +90,7 @@ fragment SQUOTE : '\'' ;
 fragment DQUOTE : '"' ;
 
 
-INT_LITER : INT_SIGN? DIGIT+ ;
+INT_LITER : DIGIT+ ;
 BOOL_LITER : TRUE | FALSE ;
 CHAR_LITER : SQUOTE CHARACTER SQUOTE ;
 STR_LITER : DQUOTE ( CHARACTER )* DQUOTE ;
