@@ -20,7 +20,7 @@ public class ProgramAST extends AST {
     }
 
     @Override
-    public void Check() {
-        // TODO: Check the program for semantic correctness
+    public void check() {
+        // TODO: check the program for semantic correctness
     }
 }
