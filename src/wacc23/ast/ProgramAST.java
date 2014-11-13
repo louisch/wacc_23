@@ -1,9 +1,5 @@
 package wacc23.ast;
 
-import antlr.WaccParser;
-import org.antlr.v4.runtime.misc.NotNull;
-
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -14,33 +10,17 @@ import java.util.Map;
  */
 public class ProgramAST extends AST {
 
-    private Map<String, AST> funcTable;
-    private AST statement;
-
-    /**
-     * Constructs a ProgramAST with an empty function table.
-     */
-    public ProgramAST() {
-        this(new HashMap<String, AST>());
-    }
+    private Map<String, FunctionAST> funcTable;
+    private StatementAST statement;
 
     /**
      * Constructs a ProgramAST with the given function table data structure.
      * @param funcTable Table for containing function names and their ASTs
      */
-    public ProgramAST(Map<String, AST> funcTable) {
+    public ProgramAST(Map<String, FunctionAST> funcTable,
+                      StatementAST statement) {
         this.funcTable = funcTable;
-    }
-
-    @Override
-    public AST visitProgram(@NotNull WaccParser.ProgramContext ctx) {
-        for (WaccParser.FuncContext funcCtx : ctx.func()) {
-            FunctionAST functionAST = new FunctionAST();
-            functionAST.visit(funcCtx);
-            funcTable.put(functionAST.getIdentifier(), functionAST);
-        }
-        statement = visit(ctx.stat());
-        return this;
+        this.statement = statement;
     }
 
     @Override

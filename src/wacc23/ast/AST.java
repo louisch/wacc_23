@@ -8,7 +8,7 @@ package wacc23.ast;
  * Used by the compiler to check for semantic errors, as well as a data
  * structure to store the program, so that code may be generated from it.
  */
-public class AST extends antlr.WaccParserBaseVisitor<AST> {
+public class AST {
     public void check() {
         throw new UnsupportedOperationException("This AST cannot be checked.");
     }

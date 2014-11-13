@@ -6,6 +6,7 @@ import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import wacc23.ast.ProgramAST;
+import wacc23.visitor.ProgramVisitor;
 
 import java.io.IOException;
 
@@ -31,7 +32,7 @@ public class Compiler {
         WaccParser parser = createParseTree(new ANTLRInputStream(System.in));
         ParseTree parseTree = parser.program();
 
-        ProgramAST program = new ProgramAST();
-        program.visit(parseTree);
+        ProgramVisitor programVisitor = new ProgramVisitor();
+        ProgramAST program = programVisitor.visit(parseTree);
     }
 }

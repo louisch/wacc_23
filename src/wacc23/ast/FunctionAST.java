@@ -1,24 +1,20 @@
 package wacc23.ast;
 
-import antlr.WaccParser;
-import org.antlr.v4.runtime.misc.NotNull;
-
 public class FunctionAST extends AST {
 
     String identifier;
-    AST body;
+    TypeAST type;
+    StatementAST body;
 
-    @Override
-    public AST visitFunc(@NotNull WaccParser.FuncContext ctx) {
-        identifier = ctx.IDENT().getText();
-        body = new StatementAST();
-        body.visit(ctx.stat());
-        return this;
+    public FunctionAST(String identifier, TypeAST type, StatementAST body) {
+        this.identifier = identifier;
+        this.type = type;
+        this.body = body;
     }
 
     @Override
     public void check() {
-
+        body.check();
     }
 
     public String getIdentifier() {
