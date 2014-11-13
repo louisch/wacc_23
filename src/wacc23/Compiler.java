@@ -43,10 +43,10 @@ public class Compiler {
     public static void main(String[] args) throws IOException {
         // Get input either from System.in, or the first argument to main.
         ANTLRInputStream input;
-        if (args.length == 1) {
+        if (args.length == 0) {
             input = new ANTLRInputStream(System.in);
-        } else if (args.length == 2) {
-            input = new ANTLRFileStream(args[1]);
+        } else if (args.length == 1) {
+            input = new ANTLRFileStream(args[0]);
         } else {
             System.out.print(helpMessage());
             throw new IllegalArgumentException("Wrong number of arguments " +
