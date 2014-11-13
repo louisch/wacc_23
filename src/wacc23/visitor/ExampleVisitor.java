@@ -1,4 +1,4 @@
-package wacc23;
+package wacc23.visitor;
 
 import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
