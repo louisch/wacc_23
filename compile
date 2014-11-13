@@ -9,6 +9,7 @@ if ARGV.length > 1
     puts "If filename is given, the corresponding file is read as a wacc file"
     puts "and compiled."
     puts "Otherwise, stdin is used."
+    exit 1
 end
 
 # Run the makefile
