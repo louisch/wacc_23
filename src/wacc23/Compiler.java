@@ -54,6 +54,8 @@ public class Compiler {
         }
 
         WaccParser parser = createParseTree(input);
+        parser.removeErrorListeners();
+        parser.addErrorListener(new Exit100ErrorListener());
         ParseTree parseTree = parser.program();
 
         ProgramVisitor programVisitor = new ProgramVisitor();
