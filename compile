@@ -28,3 +28,4 @@ if ARGV.length == 1
 else
     puts `#{javaCmd}`
 end
+exit $?.exitstatus
