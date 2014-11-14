@@ -17,7 +17,7 @@ public class FunctionVisitorTest {
     public void TestFunctionASTHasCorrectIdentifier() {
         String funcIdent = "BillyBobby3";
         String inputFunction = "int " + funcIdent + " () is skip; skip end";
-        WaccParser parser = Compiler.createParseTree(
+        WaccParser parser = Compiler.createParser(
                 new ANTLRInputStream(inputFunction));
         FunctionAST functionAST = functionVisitor.visit(parser.func());
 
