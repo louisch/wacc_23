@@ -9,6 +9,11 @@ import wacc23.ast.StatementAST;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Visits a WACC program, using other Visitors to traverse further down the tree
+ *
+ * Produces a ProgramAST upon successful traversal.
+ */
 public class ProgramVisitor extends ParseTreeVisitor<ProgramAST> {
 
     /**
