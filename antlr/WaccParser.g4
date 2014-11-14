@@ -62,7 +62,7 @@ expr : INT_LITER  # int
   | STR_LITER  # string
   | PAIR_LITER  # pair
   | IDENT  # ident
-  | arrayElem  # arrElem
+  | arrayElem  # arrayElemExpr
   | expr BINARY_OPER_MULT expr  # binOpMult
   | expr BINARY_OPER_ADD expr  # binOpAdd
   | expr BINARY_OPER_GT expr  # binOpGT
