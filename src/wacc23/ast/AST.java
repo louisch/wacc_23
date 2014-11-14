@@ -12,6 +12,6 @@ import wacc23.SemanticErrorException;
  */
 public class AST {
     public void check() throws SemanticErrorException {
-        throw new UnsupportedOperationException("Base AST cannot be checked.");
+        throw new UnsupportedOperationException("This AST cannot be checked.");
     }
 }
