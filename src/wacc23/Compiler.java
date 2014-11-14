@@ -6,7 +6,9 @@ import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
+import wacc23.ast.AST;
 import wacc23.ast.ProgramAST;
+import wacc23.visitor.ParseTreeVisitor;
 import wacc23.visitor.ProgramVisitor;
 
 import java.io.IOException;
@@ -68,8 +70,9 @@ public class Compiler {
         parser.addErrorListener(new Exit100ErrorListener());
         ParseTree parseTree = parser.program();
 
-        ProgramVisitor programVisitor = new ProgramVisitor();
-        ProgramAST program = programVisitor.visit(parseTree);
+        ParseTreeVisitor<ProgramAST> programVisitor = new ProgramVisitor();
+        // Builds an AST by traversing the parse tree with the Visitors.
+        AST program = programVisitor.visit(parseTree);
 
         // Perform semantic checking using the check methods of the ASTs.
         try {
