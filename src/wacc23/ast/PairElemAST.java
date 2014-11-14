@@ -7,9 +7,9 @@ import wacc23.SemanticErrorException;
  */
 public class PairElemAST extends AST {
     private final boolean isFirst;
-    private final ExpressionAST expr;
+    private final ExprAST expr;
 
-    public PairElemAST(boolean isFirst, ExpressionAST expr) {
+    public PairElemAST(boolean isFirst, ExprAST expr) {
         this.isFirst = isFirst;
         this.expr = expr;
     }
@@ -23,7 +23,7 @@ public class PairElemAST extends AST {
         return isFirst;
     }
 
-    public ExpressionAST getExpr() {
+    public ExprAST getExpr() {
         return expr;
     }
 }
