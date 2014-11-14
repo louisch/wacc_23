@@ -28,7 +28,7 @@ public class ProgramVisitor extends ParseTreeVisitor<ProgramAST> {
     @Override
     public ProgramAST visitProgram(@NotNull WaccParser.ProgramContext ctx) {
         FunctionVisitor functionVisitor = new FunctionVisitor();
-        Map<String, FunctionAST> funcTable = new HashMap<>();
+        Map<String, FunctionAST> funcTable = new HashMap<String, FunctionAST>();
         for (WaccParser.FuncContext funcCtx : ctx.func()) {
             FunctionAST functionAST = functionVisitor.visit(funcCtx);
             funcTable.put(functionAST.getIdentifier(), functionAST);
