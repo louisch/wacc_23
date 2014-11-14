@@ -3,4 +3,29 @@
 # You are free to change the language used for this script,
 # but do *not* change its name.
 
-puts "TODO: setup this script to call your WACC compiler"
+# Check whether argument list is ok
+if ARGV.length > 1
+    puts "Usage: compiler [filename]"
+    puts "If filename is given, the corresponding file is read as a wacc file"
+    puts "and compiled."
+    puts "Otherwise, stdin is used."
+    exit 1
+end
+
+# Run the makefile
+puts "Making Java classes..."
+makeValue = `make`
+
+# Run the newly compiled compiler
+puts "Running compiler..."
+
+classpath = "bin:lib/antlr-4.4-complete.jar"
+compilerClass = "wacc23.Compiler"
+javaCmd = "java -cp " + classpath + " " + compilerClass
+
+if ARGV.length == 1
+    puts `#{javaCmd} #{ARGV[0]}`
+else
+    puts `#{javaCmd}`
+end
+exit $?.exitstatus

@@ -1,30 +1,30 @@
-parser grammar BasicParser;
+parser grammar WaccParser;
 
 options {
-  tokenVocab=BasicLexer;
+  tokenVocab=WaccLexer;
 }
 
 program : BEGIN (func)* stat END ;
 
-func : type IDENT OPEN_PARENTHESES (paramList)? CLOSE_PARENTHESES ;
+func : type IDENT OPEN_PARENTHESES (paramList)? CLOSE_PARENTHESES IS stat END;
 
 paramList : param ( COMMA param )* ;
 
 param : type IDENT ;
 
-stat : SKIP
+stat : SKIP  # skip
   | type IDENT ASSIGN assignRhs  # declaration
-  | assignLhs ASSIGN  assignLhs  # assignment
-  | READ assignLhs
-  | FREE expr
-  | RET expr
-  | EXIT expr
-  | PRINT expr
-  | PRINTLN expr
-  | IF expr THEN stat ELSE stat FI
-  | WHILE expr DO stat DONE
-  | BEGIN stat END
-  | stat SEMICOLON stat
+  | assignLhs ASSIGN  assignRhs  # assignment
+  | READ assignLhs  # read
+  | FREE expr  # free
+  | RET expr  # ret
+  | EXIT expr  # exit
+  | PRINT expr  # print
+  | PRINTLN expr  # println
+  | IF expr THEN stat ELSE stat FI  # if
+  | WHILE expr DO stat DONE  # while
+  | BEGIN stat END  # block
+  | stat SEMICOLON stat  # stats
   ;
 
 assignLhs : IDENT
@@ -56,23 +56,20 @@ pairType : PAIR OPEN_PARENTHESES pairElemType COMMA pairElemType CLOSE_PARENTHES
 
 pairElemType : baseType | arrayType | PAIR ;
 
-expr : expr binaryOper expr
-  | INT_LITER
-  | OPEN_PARENTHESES expr CLOSE_PARENTHESES
+expr : INT_LITER
   | BOOL_LITER
   | CHAR_LITER
   | STR_LITER
   | PAIR_LITER
   | IDENT
   | arrayElem
-  | unaryOper expr
-  ;
-
-unaryOper : NOT | MINUS | LEN | ORD | CHR ;
-
-binaryOper : PLUS | MINUS | MULT | DIV | MOD
-  | GT | GTE | LT | LTE | EQ | NEQ
-  | AND | OR
+  | expr BINARY_OPER_MULT expr
+  | expr BINARY_OPER_ADD expr
+  | expr BINARY_OPER_GT expr
+  | expr BINARY_OPER_EQ expr
+  | expr BINARY_OPER_AND expr
+  | UNARY_OPER expr
+  | OPEN_PARENTHESES expr CLOSE_PARENTHESES
   ;
 
 arrayElem : IDENT (OPEN_BRACKET expr CLOSE_BRACKET)+ ;
