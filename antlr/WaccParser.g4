@@ -56,20 +56,20 @@ pairType : PAIR OPEN_PARENTHESES pairElemType COMMA pairElemType CLOSE_PARENTHES
 
 pairElemType : baseType | arrayType | PAIR ;
 
-expr : INT_LITER
-  | BOOL_LITER
-  | CHAR_LITER
-  | STR_LITER
-  | PAIR_LITER
-  | IDENT
-  | arrayElem
-  | expr BINARY_OPER_MULT expr
-  | expr BINARY_OPER_ADD expr
-  | expr BINARY_OPER_GT expr
-  | expr BINARY_OPER_EQ expr
-  | expr BINARY_OPER_AND expr
-  | UNARY_OPER expr
-  | OPEN_PARENTHESES expr CLOSE_PARENTHESES
+expr : INT_LITER  # int
+  | BOOL_LITER  # bool
+  | CHAR_LITER  # char
+  | STR_LITER  # string
+  | PAIR_LITER  # pair
+  | IDENT  # ident
+  | arrayElem  # arrElem
+  | expr BINARY_OPER_MULT expr  # binOpMult
+  | expr BINARY_OPER_ADD expr  # binOpAdd
+  | expr BINARY_OPER_GT expr  # binOpGT
+  | expr BINARY_OPER_EQ expr  # binOpEQ
+  | expr BINARY_OPER_AND expr  # binOpAnd
+  | UNARY_OPER expr  # unOp
+  | OPEN_PARENTHESES expr CLOSE_PARENTHESES  # parens
   ;
 
 arrayElem : IDENT OPEN_BRACKET expr CLOSE_BRACKET ;
