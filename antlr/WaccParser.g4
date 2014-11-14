@@ -72,6 +72,6 @@ expr : INT_LITER  # int
   | OPEN_PARENTHESES expr CLOSE_PARENTHESES  # parens
   ;
 
-arrayElem : IDENT OPEN_BRACKET expr CLOSE_BRACKET ;
+arrayElem : IDENT (OPEN_BRACKET expr CLOSE_BRACKET)+ ;
 
 arrayLiter : OPEN_BRACKET (expr (COMMA expr)*)? CLOSE_BRACKET ;

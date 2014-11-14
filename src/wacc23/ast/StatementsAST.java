@@ -8,7 +8,7 @@ public class StatementsAST extends StatementAST {
     private final List<StatementAST> statements;
 
     public StatementsAST(StatementAST statement0, StatementAST statement1) {
-        statements = new ArrayList<>();
+        statements = new ArrayList<StatementAST>();
         addToStatements(statement0);
         addToStatements(statement1);
     }
