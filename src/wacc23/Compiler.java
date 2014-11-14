@@ -34,6 +34,16 @@ public class Compiler {
     }
 
     /**
+     * Exits the program, assuming a Semantic Error has been found.
+     *
+     * Produces an exit code of 200.
+     */
+    private static void exitFromSemanticError() {
+        final int semanticErrorExitCode = 200;
+        System.exit(semanticErrorExitCode);
+    }
+
+    /**
      * <p>Runs the compiler, either using stdin as input, or a given file.</p>
      *
      * <p>If an argument is given, then it is taken to be the filename of a wacc
@@ -60,5 +70,12 @@ public class Compiler {
 
         ProgramVisitor programVisitor = new ProgramVisitor();
         ProgramAST program = programVisitor.visit(parseTree);
+
+        // Perform semantic checking using the check methods of the ASTs.
+        try {
+            program.check();
+        } catch (SemanticErrorException e) {
+            exitFromSemanticError();
+        }
     }
 }
