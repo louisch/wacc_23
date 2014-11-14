@@ -6,7 +6,8 @@
 - Creates ParseTree from System.in, using ANTLR's generated classes
 - Creates ProgramVisitor object, which will visit the parseTree, and generate
   the ProgramAST.
-- The ProgramAST will be used to do semantic checking.
+- The ProgramAST will be used to do semantic checking. If SemanticErrorException
+  is caught, then Compiler will exit with exit code 200.
 
 ### Visitors
 Visitors will be written for most of the parser rules.
@@ -36,6 +37,3 @@ Throws SemanticErrorException if syntax is incorrect.
 e.g. ProgramAST has a constructor which allows passing in of a function table,
 which maps function identifiers to FunctionASTs, and a StatementAST. It stores
 these references in internal fields.
-
-### SemanticErrorException (Class)
-Exits program, with an exit code of 200
