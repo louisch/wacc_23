@@ -29,7 +29,13 @@ public class Compiler {
                "parsed as a WACC program.\n";
     }
 
-    public static WaccParser createParseTree(ANTLRInputStream inputStream) {
+    /**
+     * Creates the various ANTLR components required to create a parser
+     * @param inputStream An input stream that will be lexed
+     * @return The resulting parser after passing input stream through all the
+     *         ANTLR components.
+     */
+    private static WaccParser createParser(ANTLRInputStream inputStream) {
         WaccLexer lexer = new WaccLexer(inputStream);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         return new WaccParser(tokens);
@@ -65,7 +71,9 @@ public class Compiler {
                                                "passed to main.");
         }
 
-        WaccParser parser = createParseTree(input);
+        WaccParser parser = createParser(input);
+        // Insert a custom Error Listener here that will produce the correct
+        // exit code on a syntax error.
         parser.removeErrorListeners();
         parser.addErrorListener(new Exit100ErrorListener());
         ParseTree parseTree = parser.program();
