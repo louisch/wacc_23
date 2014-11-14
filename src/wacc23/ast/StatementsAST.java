@@ -5,7 +5,7 @@ import java.util.List;
 
 public class StatementsAST extends StatementAST {
 
-    List<StatementAST> statements;
+    private final List<StatementAST> statements;
 
     public StatementsAST(StatementAST statement0, StatementAST statement1) {
         statements = new ArrayList<>();

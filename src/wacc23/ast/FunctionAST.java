@@ -4,9 +4,9 @@ import wacc23.SemanticErrorException;
 
 public class FunctionAST extends AST {
 
-    String identifier;
-    TypeAST type;
-    StatementAST body;
+    private final String identifier;
+    private final TypeAST type;
+    private final StatementAST body;
 
     public FunctionAST(String identifier, TypeAST type, StatementAST body) {
         this.identifier = identifier;

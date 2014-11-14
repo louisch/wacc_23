@@ -12,8 +12,8 @@ import java.util.Map;
  */
 public class ProgramAST extends AST {
 
-    private Map<String, FunctionAST> funcTable;
-    private StatementAST statement;
+    private final Map<String, FunctionAST> funcTable;
+    private final StatementAST statement;
 
     /**
      * Constructs a ProgramAST with the given function table data structure.

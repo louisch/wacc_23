@@ -21,7 +21,7 @@ import java.io.IOException;
  */
 public class Compiler {
 
-    public static String helpMessage() {
+    private static String helpMessage() {
         return "The compiler takes 0 or 1 arguments. If an argument is " +
                "given, it must be a filename, which should be a WACC program " +
                "file.\n" +
