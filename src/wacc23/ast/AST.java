@@ -1,5 +1,7 @@
 package wacc23.ast;
 
+import wacc23.SemanticErrorException;
+
 /**
  * Represents a node of the abstract syntax tree of the program.
  *
@@ -9,7 +11,7 @@ package wacc23.ast;
  * structure to store the program, so that code may be generated from it.
  */
 public class AST {
-    public void check() {
-        throw new UnsupportedOperationException("This AST cannot be checked.");
+    public void check() throws SemanticErrorException {
+        throw new UnsupportedOperationException("Base AST cannot be checked.");
     }
 }

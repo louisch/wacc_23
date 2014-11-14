@@ -1,5 +1,7 @@
 package wacc23.ast;
 
+import wacc23.SemanticErrorException;
+
 import java.util.Map;
 
 /**
@@ -24,7 +26,7 @@ public class ProgramAST extends AST {
     }
 
     @Override
-    public void check() {
+    public void check() throws SemanticErrorException {
         for (AST functionAST : funcTable.values()) {
             functionAST.check();
         }

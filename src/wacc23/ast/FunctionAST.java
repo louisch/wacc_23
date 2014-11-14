@@ -1,5 +1,7 @@
 package wacc23.ast;
 
+import wacc23.SemanticErrorException;
+
 public class FunctionAST extends AST {
 
     String identifier;
@@ -13,7 +15,7 @@ public class FunctionAST extends AST {
     }
 
     @Override
-    public void check() {
+    public void check() throws SemanticErrorException {
         body.check();
     }
 
