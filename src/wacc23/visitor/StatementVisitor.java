@@ -1,12 +1,11 @@
 package wacc23.visitor;
 
 import antlr.WaccParser;
-import antlr.WaccParserBaseVisitor;
 import org.antlr.v4.runtime.misc.NotNull;
 import wacc23.ast.StatementAST;
 import wacc23.ast.StatementsAST;
 
-public class StatementVisitor extends WaccParserBaseVisitor<StatementAST> {
+public class StatementVisitor extends ParseTreeVisitor<StatementAST> {
 
     @Override
     public StatementAST visitStats(@NotNull WaccParser.StatsContext ctx) {

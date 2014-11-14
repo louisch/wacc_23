@@ -1,7 +1,6 @@
 package wacc23.visitor;
 
 import antlr.WaccParser;
-import antlr.WaccParserBaseVisitor;
 import org.antlr.v4.runtime.misc.NotNull;
 import wacc23.ast.AST;
 import wacc23.ast.FunctionAST;
@@ -11,7 +10,7 @@ import wacc23.ast.StatementAST;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProgramVisitor extends WaccParserBaseVisitor<ProgramAST> {
+public class ProgramVisitor extends ParseTreeVisitor<ProgramAST> {
 
     /**
      * Visits the functions and statement in the program
