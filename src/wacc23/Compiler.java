@@ -21,24 +21,24 @@ import java.io.IOException;
  */
 public class Compiler {
 
-    private static String helpMessage() {
-        return "The compiler takes 0 or 1 arguments. If an argument is " +
-               "given, it must be a filename, which should be a WACC program " +
-               "file.\n" +
-               "If no arguments are given, then stdin is taken as input, and " +
-               "parsed as a WACC program.\n";
-    }
-
     /**
      * Creates the various ANTLR components required to create a parser
      * @param inputStream An input stream that will be lexed
      * @return The resulting parser after passing input stream through all the
      *         ANTLR components.
      */
-    private static WaccParser createParser(ANTLRInputStream inputStream) {
+    public static WaccParser createParser(ANTLRInputStream inputStream) {
         WaccLexer lexer = new WaccLexer(inputStream);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         return new WaccParser(tokens);
+    }
+
+    private static String helpMessage() {
+        return "The compiler takes 0 or 1 arguments. If an argument is " +
+               "given, it must be a filename, which should be a WACC program " +
+               "file.\n" +
+               "If no arguments are given, then stdin is taken as input, and " +
+               "parsed as a WACC program.\n";
     }
 
     /**
@@ -81,12 +81,5 @@ public class Compiler {
         ParseTreeVisitor<ProgramAST> programVisitor = new ProgramVisitor();
         // Builds an AST by traversing the parse tree with the Visitors.
         AST program = programVisitor.visit(parseTree);
-
-        // Perform semantic checking using the check methods of the ASTs.
-        try {
-            program.check();
-        } catch (SemanticErrorException e) {
-            exitFromSemanticError();
-        }
     }
 }

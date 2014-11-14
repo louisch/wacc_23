@@ -20,5 +20,6 @@ import wacc23.ast.AST;
  *
  * @param <T> The type of AST that the visitor returns.
  */
-public class ParseTreeVisitor<T extends AST> extends WaccParserBaseVisitor<T> {
+public abstract class ParseTreeVisitor<T extends AST>
+        extends WaccParserBaseVisitor<T> {
 }
