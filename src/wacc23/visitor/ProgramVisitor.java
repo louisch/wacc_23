@@ -18,12 +18,12 @@ public class ProgramVisitor extends ParseTreeVisitor<ProgramAST> {
 
     /**
      * Visits the functions and statement in the program
-     * @param ctx The parse tree representing the program
-     * @return A ProgramAST representing the program in a form suitable for
-     *         the compiler to do intermediate work before code generation.
      *
      * Uses the FunctionVisitor and StatementVisitor to visit and create ASTs
      * to enter into the ProgramAST.
+     * @param ctx The parse tree representing the program
+     * @return A ProgramAST representing the program in a form suitable for
+     *         the compiler to do intermediate work before code generation.
      */
     @Override
     public ProgramAST visitProgram(@NotNull WaccParser.ProgramContext ctx) {
