@@ -4,9 +4,6 @@ import wacc23.SemanticErrorException;
 import wacc23.ast.expr.ExprAST;
 import wacc23.ast.statement.StatementAST;
 
-/**
- * Created by Anton A.
- */
 public abstract class AbstractExprStatementAST extends StatementAST {
     private final ExprAST expr;
 
