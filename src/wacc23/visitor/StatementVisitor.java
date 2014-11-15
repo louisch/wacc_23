@@ -2,7 +2,6 @@ package wacc23.visitor;
 
 import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
-import org.antlr.v4.runtime.tree.ParseTree;
 import wacc23.ast.AssignLhsAST;
 import wacc23.ast.IdentAST;
 import wacc23.ast.assignRhs.AssignRhsAST;
@@ -14,13 +13,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class StatementVisitor extends ParseTreeVisitor<StatementAST> {
-
-    @Override
-    public StatementAST visit(@NotNull ParseTree tree) {
-        // TODO
-        return super.visit(tree);
-    }
-
     @Override
     public StatementAST visitSkip(@NotNull WaccParser.SkipContext ctx) {
         return new SkipAST();

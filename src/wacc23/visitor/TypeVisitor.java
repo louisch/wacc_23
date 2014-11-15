@@ -2,31 +2,12 @@ package wacc23.visitor;
 
 import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
-import org.antlr.v4.runtime.tree.ParseTree;
 import wacc23.ast.type.ArrayTypeAST;
 import wacc23.ast.type.BaseTypeAST;
 import wacc23.ast.type.PairTypeAST;
 import wacc23.ast.type.TypeAST;
 
 public class TypeVisitor extends ParseTreeVisitor<TypeAST> {
-    @Override
-    public TypeAST visit(@NotNull ParseTree tree) {
-        if (tree instanceof WaccParser.TypeContext) {
-            WaccParser.TypeContext ctx = (WaccParser.TypeContext) tree;
-            if (ctx.arrayType() != null) {
-                return visitArrayType(ctx.arrayType());
-            } else if (ctx.baseType() != null) {
-                return visitBaseType(ctx.baseType());
-            } else if (ctx.pairType() != null) {
-                return visitPairType(ctx.pairType());
-            } else {
-                throw new IllegalArgumentException("No context found for TypeContext");
-            }
-        } else {
-            throw new IllegalArgumentException("TypeVisitor: non-type found where type expected.");
-        }
-    }
-
     @Override
     public TypeAST visitBaseType(@NotNull WaccParser.BaseTypeContext ctx) {
         String type;
