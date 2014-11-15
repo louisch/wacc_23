@@ -81,5 +81,11 @@ public class Compiler {
         ParseTreeVisitor<ProgramAST> programVisitor = new ProgramVisitor();
         // Builds an AST by traversing the parse tree with the Visitors.
         AST program = programVisitor.visit(parseTree);
+
+        try {
+            program.check();
+        } catch (SemanticErrorException e) {
+            exitFromSemanticError();
+        }
     }
 }
