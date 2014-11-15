@@ -15,7 +15,12 @@ public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
 
     @Override
     public ExprAST visitInt(@NotNull WaccParser.IntContext ctx) {
-        return new IntAST(Integer.parseInt(ctx.getText()));
+        try {
+            int i = Integer.parseInt(ctx.getText());
+            return new IntAST(i);
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("Incorrect number format supplied. Possible integer overflow.");
+        }
     }
 
     @Override
