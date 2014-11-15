@@ -4,9 +4,6 @@ import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
 import wacc23.ast.expr.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
     @Override
     public ExprAST visitInt(@NotNull WaccParser.IntContext ctx) {

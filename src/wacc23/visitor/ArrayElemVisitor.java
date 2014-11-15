@@ -7,7 +7,6 @@ import wacc23.ast.expr.ExprAST;
 import wacc23.ast.expr.IdentAST;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
