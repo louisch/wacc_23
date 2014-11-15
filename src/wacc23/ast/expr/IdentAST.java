@@ -12,4 +12,19 @@ public class IdentAST extends ExprAST {
     public String getIdentifier() {
         return identifier;
     }
+
+    @Override
+    public String toString() {
+        return identifier.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return identifier.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        return identifier.hashCode();
+    }
 }
