@@ -7,7 +7,7 @@ import wacc23.ast.IdentAST;
 import wacc23.ast.PairElemAST;
 import wacc23.ast.assignRhs.*;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,39 +16,37 @@ import java.util.List;
 public class AssignRhsVisitor extends ParseTreeVisitor<AssignRhsAST> {
     @Override
     public AssignRhsAST visitAssignRhs(@NotNull WaccParser.AssignRhsContext ctx) {
+        final ExprVisitor exprVisitor = new ExprVisitor();
         if (ctx.arrayLiter() != null) {
             // assign array literal
-            List<ExprAST> exps = new LinkedList<ExprAST>();
+            List<ExprAST> exps = new ArrayList<>();
             for (WaccParser.ExprContext e : ctx.arrayLiter().expr()) {
-                exps.add(new ExprVisitor().visit(e));
+                exps.add(exprVisitor.visit(e));
             }
-            return new AssignArrayLiteralAST(exps);
+            return new AssignRhsAST(new ArrayLiteralAST(exps));
 
         } else if (ctx.pairElem() != null) {
             // assign pair element
             PairElemAST pair = new PairElemVisitor().visitPairElem(ctx.pairElem());
-            return new AssignPairElemAST(pair);
+            return new AssignRhsAST(pair);
 
         } else if (ctx.NEWPAIR() != null) {
             // assign pair
-            List<ExprAST> argList = new LinkedList<ExprAST>();
-            for (WaccParser.ExprContext e : ctx.expr()) {
-                argList.add(new ExprVisitor().visit(e));
-            }
-            return new AssignNewpairAST(argList);
+            return new AssignRhsAST(new PairAST(exprVisitor.visit(ctx.expr(0)),
+                                                exprVisitor.visit(ctx.expr(1))));
 
         } else if (ctx.CALL() != null) {
             // assign function call
             IdentAST identifier = new IdentAST(ctx.IDENT().getText());
-            List<ExprAST> argList = new LinkedList<ExprAST>();
+            List<ExprAST> argList = new ArrayList<>();
             for (WaccParser.ExprContext e : ctx.argList().expr()) {
-                argList.add(new ExprVisitor().visit(e));
+                argList.add(exprVisitor.visit(e));
             }
-            return new AssignCallAST(identifier, argList);
+            return new AssignRhsAST(new CallAST(identifier, argList));
 
         } else if (ctx.expr() != null) {
             // assign expression
-            return new AssignExprAST(new ExprVisitor().visit(ctx.expr(0)));
+            return new AssignRhsAST(exprVisitor.visit(ctx.expr(0)));
 
         } else {
             throw new IllegalArgumentException("No context found for AssignRhs");
