@@ -12,9 +12,4 @@ public class IdentAST extends ExprAST {
     public String getIdentifier() {
         return identifier;
     }
-
-    @Override
-    public void check() throws SemanticErrorException {
-        // do nothing
-    }
 }
