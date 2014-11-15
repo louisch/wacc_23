@@ -6,10 +6,9 @@ public class BaseTypeAST extends TypeAST {
         super(type);
     }
 
-    public static BaseTypeAST getIntType() {
+    public static BaseTypeAST makeIntType() {
         return new BaseTypeAST("int");
     }
 
     // TODO: Write other get_Type methods
 }
-
