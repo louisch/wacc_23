@@ -5,8 +5,11 @@ import wacc23.ast.expr.ExprAST;
 /**
  * Created by Anton A.
  */
-public class PrintAST extends AbstractExprStatementAST {
+public class PrintAST extends StatementAST {
+
+    private final ExprAST expr;
+
     public PrintAST(ExprAST expr) {
-        super(expr);
+        this.expr = expr;
     }
 }

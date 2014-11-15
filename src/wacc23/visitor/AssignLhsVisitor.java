@@ -3,9 +3,9 @@ package wacc23.visitor;
 import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
 import wacc23.ast.AssignLhsAST;
-import wacc23.ast.expr.IdentAST;
 import wacc23.ast.PairElemAST;
 import wacc23.ast.expr.ArrayElemAST;
+import wacc23.ast.expr.IdentAST;
 
 /**
  * Created by Anton A.

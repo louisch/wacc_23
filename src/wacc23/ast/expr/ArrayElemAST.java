@@ -1,6 +1,7 @@
 package wacc23.ast.expr;
 
 import wacc23.SemanticErrorException;
+import wacc23.SymbolTable;
 import wacc23.type.Type;
 
 import java.util.List;
@@ -15,8 +16,8 @@ public class ArrayElemAST extends ExprAST {
     }
 
     @Override
-    public void check() throws SemanticErrorException {
-        super.check();
+    public void check(SymbolTable funcSymTable, SymbolTable varSymTable) throws SemanticErrorException {
+        super.check(funcSymTable, varSymTable);
     }
 
     public String getIdentifier() {

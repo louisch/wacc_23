@@ -1,7 +1,7 @@
 package wacc23;
 
-import antlr.WaccParser;
 import antlr.WaccLexer;
+import antlr.WaccParser;
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;

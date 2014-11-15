@@ -1,6 +1,7 @@
 package wacc23.ast.assignRhs;
 
 import wacc23.SemanticErrorException;
+import wacc23.SymbolTable;
 import wacc23.ast.AST;
 import wacc23.type.Type;
 
@@ -18,7 +19,7 @@ public class AssignRhsAST extends AST {
     }
 
     @Override
-    public void check() throws SemanticErrorException {
-        innerValue.check();
+    public void check(SymbolTable funcSymTable, SymbolTable varSymTable) throws SemanticErrorException {
+        innerValue.check(funcSymTable, varSymTable);
     }
 }

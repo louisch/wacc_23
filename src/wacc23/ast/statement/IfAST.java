@@ -1,26 +1,27 @@
 package wacc23.ast.statement;
 
 import wacc23.SemanticErrorException;
+import wacc23.SymbolTable;
 import wacc23.ast.expr.ExprAST;
 
 import java.util.List;
 
-/**
- * Created by Anton A.
- */
-public class IfAST extends AbstractExprStatementAST {
+public class IfAST extends StatementAST {
+
+    private final ExprAST boolExpr;
+
     private final List<StatementAST> stats;
 
     public IfAST(ExprAST expr, List<StatementAST> stats) {
-        super(expr);
+        this.boolExpr = expr;
         this.stats = stats;
     }
 
     @Override
-    public void check() throws SemanticErrorException {
-        super.check();
+    public void check(SymbolTable funcSymTable, SymbolTable varSymTable)
+            throws SemanticErrorException {
         for (StatementAST s : stats) {
-            s.check();
+            s.check(funcSymTable, varSymTable);
         }
     }
 

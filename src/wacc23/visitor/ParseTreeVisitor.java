@@ -1,7 +1,6 @@
 package wacc23.visitor;
 
 import antlr.WaccParserBaseVisitor;
-import wacc23.ast.AST;
 
 /**
  * Used for visiting a ParseTree of a WACC program.
