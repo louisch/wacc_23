@@ -3,8 +3,7 @@ package wacc23.visitor;
 import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTree;
-import wacc23.ast.expr.ExprAST;
-import wacc23.ast.expr.IntAST;
+import wacc23.ast.expr.*;
 
 public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
     @Override
@@ -25,17 +24,20 @@ public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
 
     @Override
     public ExprAST visitBool(@NotNull WaccParser.BoolContext ctx) {
-        return super.visitBool(ctx);
+        return new BoolAST(ctx.BOOL_LITER().getText().equals("true"));
     }
 
     @Override
     public ExprAST visitChar(@NotNull WaccParser.CharContext ctx) {
-        return super.visitChar(ctx);
+        if (ctx.CHAR_LITER().getText().length() > 1) {
+            throw new IllegalArgumentException("Looking for char, but found string.");
+        }
+        return new CharAST(ctx.CHAR_LITER().getText().charAt(0));
     }
 
     @Override
     public ExprAST visitString(@NotNull WaccParser.StringContext ctx) {
-        return super.visitString(ctx);
+        return new StringAST(ctx.STR_LITER().getText());
     }
 
     @Override
