@@ -151,6 +151,6 @@ public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
 
     @Override
     public ExprAST visitParens(@NotNull WaccParser.ParensContext ctx) {
-        return super.visitParens(ctx);
+        return new ParensAST(visit(ctx.expr()));
     }
 }
