@@ -1,5 +1,8 @@
 package wacc23.ast.expr;
 
+import wacc23.SemanticErrorException;
+import wacc23.SymbolTable;
+
 public class IdentAST extends ExprAST {
     private final String identifier;
 
@@ -9,6 +12,14 @@ public class IdentAST extends ExprAST {
 
     public String getIdentifier() {
         return identifier;
+    }
+
+    @Override
+    public void check(SymbolTable funcSymTable, SymbolTable varSymTable)
+            throws SemanticErrorException {
+        if (!varSymTable.containsIdent(this)) {
+            throw new SemanticErrorException("Identifier not declared.");
+        }
     }
 
     @Override

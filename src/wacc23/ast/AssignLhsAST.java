@@ -10,12 +10,12 @@ public class AssignLhsAST<T extends AST> extends AST {
         this.lhsType = lhsType;
     }
 
+    public T getLhsType() {
+        return lhsType;
+    }
+
     @Override
     public void check(SymbolTable funcSymTable, SymbolTable varSymTable) throws SemanticErrorException {
         lhsType.check(funcSymTable, varSymTable);
-    }
-
-    public T getLhsType() {
-        return lhsType;
     }
 }

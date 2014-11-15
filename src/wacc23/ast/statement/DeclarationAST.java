@@ -24,6 +24,7 @@ public class DeclarationAST extends StatementAST {
             throw new SemanticErrorException("Variable must have the same as " +
                     "its initial value.");
         }
+        rhs.check(funcSymTable, varSymTable);
     }
 
     public Type getType() {
