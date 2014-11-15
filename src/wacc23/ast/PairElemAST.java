@@ -2,10 +2,8 @@ package wacc23.ast;
 
 import wacc23.SemanticErrorException;
 import wacc23.ast.expr.ExprAST;
+import wacc23.type.Type;
 
-/**
- * Created by Anton A.
- */
 public class PairElemAST extends AST {
     private final boolean isFirst;
     private final ExprAST expr;
@@ -26,5 +24,11 @@ public class PairElemAST extends AST {
 
     public ExprAST getExpr() {
         return expr;
+    }
+
+    @Override
+    public Type getType() {
+        // TODO: Use the symbol table to do this.
+        return null;
     }
 }
