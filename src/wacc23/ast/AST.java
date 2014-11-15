@@ -15,7 +15,6 @@ import wacc23.type.Type;
 public abstract class AST {
     public void check(SymbolTable funcSymTable,
                       SymbolTable varSymTable) throws SemanticErrorException {
-        throw new UnsupportedOperationException("This AST cannot be checked.");
     }
 
     public Type getType() {
