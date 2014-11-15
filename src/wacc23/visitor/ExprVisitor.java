@@ -57,28 +57,86 @@ public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
 
     @Override
     public ExprAST visitBinOpMult(@NotNull WaccParser.BinOpMultContext ctx) {
-        return super.visitBinOpMult(ctx);
+        String actualOp = ctx.BINARY_OPER_MULT().getText();
+        switch(actualOp) {
+            case "*":
+                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.MULT);
+            case "/":
+                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.DIV);
+            case "%":
+                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.MOD);
+            default:
+                throw new UnsupportedOperationException("\""
+                        + actualOp + "\" is not a valid BinOpMult");
+        }
     }
 
     @Override
     public ExprAST visitBinOpAdd(@NotNull WaccParser.BinOpAddContext ctx) {
-        return super.visitBinOpAdd(ctx);
+        String actualOp = ctx.BINARY_OPER_ADD().getText();
+        switch(actualOp) {
+            case "+":
+                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.PLUS);
+            case "-":
+                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.MINUS);
+            default:
+                throw new UnsupportedOperationException("\""
+                        + actualOp + "\" is not a valid BinOpAdd");
+        }
     }
 
     @Override
     public ExprAST visitBinOpGT(@NotNull WaccParser.BinOpGTContext ctx) {
-        return super.visitBinOpGT(ctx);
+            String actualOp = ctx.BINARY_OPER_GT().getText();
+            switch(actualOp) {
+                case ">":
+                    return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.GT);
+                case ">=":
+                    return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.GTE);
+                case "<":
+                    return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.LT);
+                case "<=":
+                    return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.LTE);
+                default:
+                    throw new UnsupportedOperationException("\""
+                            + actualOp + "\" is not a valid BinOpGT");
+            }
     }
 
     @Override
     public ExprAST visitBinOpEQ(@NotNull WaccParser.BinOpEQContext ctx) {
-        return super.visitBinOpEQ(ctx);
+        String actualOp = ctx.BINARY_OPER_EQ().getText();
+        switch(actualOp) {
+            case "==":
+                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.EQ);
+            case "!=":
+                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.NEQ);
+            default:
+                throw new UnsupportedOperationException("\""
+                        + actualOp + "\" is not a valid BinOpEQ");
+        }
     }
 
     @Override
     public ExprAST visitBinOpAnd(@NotNull WaccParser.BinOpAndContext ctx) {
-        return super.visitBinOpAnd(ctx);
+        String actualOp = ctx.BINARY_OPER_AND().getText();
+        switch(actualOp) {
+            case "&&":
+                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.AND);
+            case "||":
+                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.OR);
+            default:
+                throw new UnsupportedOperationException("\""
+                        + actualOp + "\" is not a valid BinOpAnd");
+        }    }
+
+    @Override
+    public ExprAST visitUnOp(@NotNull WaccParser.UnOpContext ctx) {
+        return super.visitUnOp(ctx);
     }
 
-
+    @Override
+    public ExprAST visitParens(@NotNull WaccParser.ParensContext ctx) {
+        return super.visitParens(ctx);
+    }
 }
