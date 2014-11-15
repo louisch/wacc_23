@@ -7,4 +7,8 @@ package wacc23;
  * still has some code which semantically does not make sense.
  */
 public class SemanticErrorException extends Exception {
+    public SemanticErrorException() {}
+    public SemanticErrorException(String message) {
+        super(message);
+    }
 }
