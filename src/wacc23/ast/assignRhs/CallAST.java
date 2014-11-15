@@ -19,8 +19,11 @@ public class CallAST extends AST {
     }
 
     @Override
-    public void check(SymbolTable funcSymTable, SymbolTable varSymTable) throws SemanticErrorException {
-        // TODO: Use function symbol table to check type matches up.
+    public void check(SymbolTable funcSymTable, SymbolTable varSymTable)
+            throws SemanticErrorException {
+        if (!(funcSymTable.containsIdent(ident))) {
+            throw new SemanticErrorException("Function not declared.");
+        }
     }
 
     public IdentAST getIdent() {
