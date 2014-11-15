@@ -2,9 +2,6 @@ package wacc23.ast;
 
 import wacc23.SemanticErrorException;
 
-/**
- * Created by Anton A.
- */
 public class AssignLhsAST<T extends AST> extends AST {
     private final T lhsType;
 
