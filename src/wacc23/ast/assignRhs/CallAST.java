@@ -3,7 +3,7 @@ package wacc23.ast.assignRhs;
 import wacc23.SemanticErrorException;
 import wacc23.ast.AST;
 import wacc23.ast.expr.ExprAST;
-import wacc23.ast.IdentAST;
+import wacc23.ast.expr.IdentAST;
 import wacc23.type.Type;
 
 import java.util.List;
