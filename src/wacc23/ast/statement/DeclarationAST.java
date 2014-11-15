@@ -20,6 +20,10 @@ public class DeclarationAST extends StatementAST {
     @Override
     public void check(SymbolTable funcSymTable, SymbolTable varSymTable)
             throws SemanticErrorException {
+        if (!type.equals(rhs.getType())) {
+            throw new SemanticErrorException("Variable must have the same as " +
+                    "its initial value.");
+        }
     }
 
     public Type getType() {
