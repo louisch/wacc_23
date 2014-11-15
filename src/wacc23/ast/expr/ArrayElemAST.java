@@ -8,24 +8,25 @@ import java.util.List;
 
 public class ArrayElemAST extends ExprAST {
     private final String identifier;
-    private final List<ExprAST> exprAST;
+    private final List<ExprAST> indices;
 
-    public ArrayElemAST(String identifier, List<ExprAST> exprAST) {
+    public ArrayElemAST(String identifier, List<ExprAST> indices) {
         this.identifier = identifier;
-        this.exprAST = exprAST;
+        this.indices = indices;
     }
 
     @Override
     public void check(SymbolTable funcSymTable, SymbolTable varSymTable) throws SemanticErrorException {
         super.check(funcSymTable, varSymTable);
+        // check that index is of type int
     }
 
     public String getIdentifier() {
         return identifier;
     }
 
-    public List<ExprAST> getExprAST() {
-        return exprAST;
+    public List<ExprAST> getIndices() {
+        return indices;
     }
 
     @Override
