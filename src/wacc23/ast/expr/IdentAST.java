@@ -13,7 +13,7 @@ public class IdentAST extends ExprAST {
 
     @Override
     public String toString() {
-        return identifier.toString();
+        return identifier;
     }
 
     @Override
