@@ -18,7 +18,13 @@ public class IdentAST extends ExprAST {
 
     @Override
     public boolean equals(Object obj) {
-        return identifier.equals(obj);
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof IdentAST) {
+            return ((IdentAST) obj).identifier.equals(this.identifier);
+        }
+        return false;
     }
 
     @Override
