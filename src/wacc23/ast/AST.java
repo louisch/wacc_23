@@ -1,6 +1,7 @@
 package wacc23.ast;
 
 import wacc23.SemanticErrorException;
+import wacc23.SymbolTable;
 import wacc23.type.Type;
 
 /**
@@ -12,7 +13,8 @@ import wacc23.type.Type;
  * structure to store the program, so that code may be generated from it.
  */
 public abstract class AST {
-    public void check() throws SemanticErrorException {
+    public void check(SymbolTable funcSymTable,
+                      SymbolTable varSymTable) throws SemanticErrorException {
         throw new UnsupportedOperationException("This AST cannot be checked.");
     }
 

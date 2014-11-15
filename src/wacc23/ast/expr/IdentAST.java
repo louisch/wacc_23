@@ -1,7 +1,5 @@
 package wacc23.ast.expr;
 
-import wacc23.SemanticErrorException;
-
 public class IdentAST extends ExprAST {
     private final String identifier;
 
@@ -14,7 +12,23 @@ public class IdentAST extends ExprAST {
     }
 
     @Override
-    public void check() throws SemanticErrorException {
-        // do nothing
+    public String toString() {
+        return identifier;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof IdentAST) {
+            return ((IdentAST) obj).identifier.equals(this.identifier);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return identifier.hashCode();
     }
 }

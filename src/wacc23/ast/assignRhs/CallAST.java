@@ -1,6 +1,7 @@
 package wacc23.ast.assignRhs;
 
 import wacc23.SemanticErrorException;
+import wacc23.SymbolTable;
 import wacc23.ast.AST;
 import wacc23.ast.expr.ExprAST;
 import wacc23.ast.expr.IdentAST;
@@ -18,7 +19,7 @@ public class CallAST extends AST {
     }
 
     @Override
-    public void check() throws SemanticErrorException {
+    public void check(SymbolTable funcSymTable, SymbolTable varSymTable) throws SemanticErrorException {
         // TODO: Use function symbol table to check type matches up.
     }
 
