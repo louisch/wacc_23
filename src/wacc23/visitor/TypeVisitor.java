@@ -2,10 +2,16 @@ package wacc23.visitor;
 
 import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
+import org.antlr.v4.runtime.tree.ParseTree;
 import wacc23.ast.type.BaseTypeAST;
 import wacc23.ast.type.TypeAST;
 
 public class TypeVisitor extends ParseTreeVisitor<TypeAST> {
+    @Override
+    public TypeAST visit(@NotNull ParseTree tree) {
+        // TODO: distinguish between types and call appropriately
+        return super.visit(tree);
+    }
 
     @Override
     public TypeAST visitBaseType(@NotNull WaccParser.BaseTypeContext ctx) {
