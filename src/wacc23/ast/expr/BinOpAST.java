@@ -4,12 +4,12 @@ public class BinOpAST extends ExprAST {
 
     private ExprAST lhs;
     private ExprAST rhs;
-    private BinOp binOp;
+    private Op op;
 
-    public BinOpAST(ExprAST lhs, ExprAST rhs, BinOp binOp) {
+    public BinOpAST(ExprAST lhs, ExprAST rhs, Op op) {
         this.lhs = lhs;
         this.rhs = rhs;
-        this.binOp = binOp;
+        this.op = op;
     }
 
     public ExprAST getLhs() {
@@ -20,8 +20,8 @@ public class BinOpAST extends ExprAST {
         return rhs;
     }
 
-    public BinOp getBinOp() {
-        return binOp;
+    public Op getOp() {
+        return op;
     }
 
 }
