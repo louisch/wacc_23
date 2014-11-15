@@ -1,4 +1,6 @@
-package wacc23.ast;
+package wacc23.ast.statement;
+
+import wacc23.ast.AST;
 
 import java.util.ArrayList;
 import java.util.List;

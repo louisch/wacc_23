@@ -2,10 +2,21 @@ package wacc23.visitor;
 
 import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
-import wacc23.ast.StatementAST;
-import wacc23.ast.StatementsAST;
+import wacc23.ast.*;
+import wacc23.ast.assignRhs.AssignRhsAST;
+import wacc23.ast.statement.DeclarationAST;
+import wacc23.ast.statement.StatementAST;
+import wacc23.ast.statement.StatementsAST;
 
 public class StatementVisitor extends ParseTreeVisitor<StatementAST> {
+
+    @Override
+    public StatementAST visitDeclaration(@NotNull WaccParser.DeclarationContext ctx) {
+        TypeAST type = new TypeVisitor().visit(ctx.type());
+        IdentAST identifier = new IdentAST(ctx.IDENT().getText());
+        AssignRhsAST rhs = new AssignRhsVisitor().visitAssignRhs(ctx.assignRhs());
+        return new DeclarationAST(type, identifier, rhs);
+    }
 
     @Override
     public StatementAST visitStats(@NotNull WaccParser.StatsContext ctx) {

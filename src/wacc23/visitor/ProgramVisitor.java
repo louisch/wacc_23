@@ -4,7 +4,7 @@ import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
 import wacc23.ast.FunctionAST;
 import wacc23.ast.ProgramAST;
-import wacc23.ast.StatementAST;
+import wacc23.ast.statement.StatementAST;
 
 import java.util.HashMap;
 import java.util.Map;
