@@ -60,11 +60,11 @@ public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
         String actualOp = ctx.BINARY_OPER_MULT().getText();
         switch(actualOp) {
             case "*":
-                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.MULT);
+                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), Op.MULT);
             case "/":
-                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.DIV);
+                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), Op.DIV);
             case "%":
-                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.MOD);
+                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), Op.MOD);
             default:
                 throw new UnsupportedOperationException("\""
                         + actualOp + "\" is not a valid BinOpMult");
@@ -76,9 +76,9 @@ public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
         String actualOp = ctx.BINARY_OPER_ADD().getText();
         switch(actualOp) {
             case "+":
-                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.PLUS);
+                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), Op.PLUS);
             case "-":
-                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.MINUS);
+                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), Op.MINUS);
             default:
                 throw new UnsupportedOperationException("\""
                         + actualOp + "\" is not a valid BinOpAdd");
@@ -90,13 +90,13 @@ public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
             String actualOp = ctx.BINARY_OPER_GT().getText();
             switch(actualOp) {
                 case ">":
-                    return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.GT);
+                    return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), Op.GT);
                 case ">=":
-                    return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.GTE);
+                    return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), Op.GTE);
                 case "<":
-                    return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.LT);
+                    return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), Op.LT);
                 case "<=":
-                    return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.LTE);
+                    return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), Op.LTE);
                 default:
                     throw new UnsupportedOperationException("\""
                             + actualOp + "\" is not a valid BinOpGT");
@@ -108,9 +108,9 @@ public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
         String actualOp = ctx.BINARY_OPER_EQ().getText();
         switch(actualOp) {
             case "==":
-                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.EQ);
+                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), Op.EQ);
             case "!=":
-                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.NEQ);
+                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), Op.NEQ);
             default:
                 throw new UnsupportedOperationException("\""
                         + actualOp + "\" is not a valid BinOpEQ");
@@ -122,17 +122,35 @@ public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
         String actualOp = ctx.BINARY_OPER_AND().getText();
         switch(actualOp) {
             case "&&":
-                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.AND);
+                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), Op.AND);
             case "||":
-                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), BinOp.OR);
+                return new BinOpAST(visit(ctx.expr(0)), visit(ctx.expr(1)), Op.OR);
             default:
                 throw new UnsupportedOperationException("\""
                         + actualOp + "\" is not a valid BinOpAnd");
-        }    }
+        }
+    }
 
     @Override
     public ExprAST visitUnOp(@NotNull WaccParser.UnOpContext ctx) {
-        return super.visitUnOp(ctx);
+        String actualOp = ctx.UNARY_OPER().getText();
+        switch(actualOp) {
+            case "!":
+                return new UnOpAST(visit(ctx.expr()), Op.NOT);
+            case "+":
+                return new UnOpAST(visit(ctx.expr()), Op.PLUS);
+            case "-":
+                return new UnOpAST(visit(ctx.expr()), Op.MINUS);
+            case "len":
+                return new UnOpAST(visit(ctx.expr()), Op.LEN);
+            case "ord":
+                return new UnOpAST(visit(ctx.expr()), Op.ORD);
+            case "chr":
+                return new UnOpAST(visit(ctx.expr()), Op.CHR);
+            default:
+                throw new UnsupportedOperationException("\""
+                        + actualOp + "\" is not a valid UnOp");
+        }
     }
 
     @Override
