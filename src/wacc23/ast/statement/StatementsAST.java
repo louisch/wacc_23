@@ -1,4 +1,6 @@
-package wacc23.ast;
+package wacc23.ast.statement;
+
+import wacc23.ast.AST;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +10,7 @@ public class StatementsAST extends StatementAST {
     private final List<StatementAST> statements;
 
     public StatementsAST(StatementAST statement0, StatementAST statement1) {
-        statements = new ArrayList<>();
+        statements = new ArrayList<StatementAST>();
         addToStatements(statement0);
         addToStatements(statement1);
     }
