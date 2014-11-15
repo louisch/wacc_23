@@ -2,7 +2,6 @@ package wacc23.ast.statement;
 
 import wacc23.SemanticErrorException;
 import wacc23.ast.AssignLhsAST;
-import wacc23.ast.expr.ExprAST;
 
 /**
  * Created by Anton A.
