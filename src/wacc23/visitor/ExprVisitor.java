@@ -2,10 +2,17 @@ package wacc23.visitor;
 
 import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
+import org.antlr.v4.runtime.tree.ParseTree;
 import wacc23.ast.ExprAST;
 import wacc23.ast.IntAST;
 
 public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
+    @Override
+    public ExprAST visit(@NotNull ParseTree tree) {
+        //should obviously figure out type of expression and call appropriate method
+        return super.visit(tree);
+    }
+
     @Override
     public ExprAST visitInt(@NotNull WaccParser.IntContext ctx) {
         return new IntAST(Integer.parseInt(ctx.getText()));
@@ -65,4 +72,6 @@ public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
     public ExprAST visitBinOpAnd(@NotNull WaccParser.BinOpAndContext ctx) {
         return super.visitBinOpAnd(ctx);
     }
+
+
 }

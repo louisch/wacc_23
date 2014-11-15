@@ -2,14 +2,16 @@ package wacc23.ast;
 
 import wacc23.SemanticErrorException;
 
+import java.util.List;
+
 /**
  * Created by Anton A.
  */
 public class ArrayElemAST extends ExprAST {
     private final String identifier;
-    private final ExprAST exprAST;
+    private final List<ExprAST> exprAST;
 
-    public ArrayElemAST(String identifier, ExprAST exprAST) {
+    public ArrayElemAST(String identifier, List<ExprAST> exprAST) {
         this.identifier = identifier;
         this.exprAST = exprAST;
     }
@@ -23,7 +25,7 @@ public class ArrayElemAST extends ExprAST {
         return identifier;
     }
 
-    public ExprAST getExprAST() {
+    public List<ExprAST> getExprAST() {
         return exprAST;
     }
 
@@ -34,6 +36,7 @@ public class ArrayElemAST extends ExprAST {
 //        e.g. int[] a     - the type of a[0] is "int", right? i.e. a BaseTypeAST
 //        e.g. int[][] a   - the type of a[0] is now "int[]" i.e. an ArrayTypeAST
 //        I think this should return a TypeAST, but I'm not sure.
+//  Anton: It can, but you would have to look up the array declaration to find out the elem type
         return null;
     }
 }

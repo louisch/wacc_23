@@ -2,6 +2,7 @@ package wacc23.visitor;
 
 import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
+import wacc23.ast.ExprAST;
 import wacc23.ast.PairElemAST;
 
 /**
@@ -12,6 +13,8 @@ import wacc23.ast.PairElemAST;
 public class PairElemVisitor extends ParseTreeVisitor<PairElemAST> {
     @Override
     public PairElemAST visitPairElem(@NotNull WaccParser.PairElemContext ctx) {
-        return super.visitPairElem(ctx);
+        boolean isFirst = ctx.FST() != null;
+        ExprAST expr = new ExprVisitor().visit(ctx.expr());
+        return new PairElemAST(isFirst, expr);
     }
 }

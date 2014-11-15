@@ -18,8 +18,10 @@ public class AssignLhsVisitor extends ParseTreeVisitor<AssignLhsAST> {
             return new AssignLhsAST<IdentAST>(new IdentAST(ctx.IDENT().getText()));
         } else if (ctx.arrayElem() != null) {
             return new AssignLhsAST<ArrayElemAST>(new ArrayElemVisitor().visit(ctx.arrayElem()));
-        } else {
+        } else if (ctx.pairElem() != null) {
             return new AssignLhsAST<PairElemAST>(new PairElemVisitor().visit(ctx.pairElem()));
+        } else {
+            throw new IllegalArgumentException("No context found for AssignLhs");
         }
     }
 }
