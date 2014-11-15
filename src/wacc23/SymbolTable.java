@@ -17,6 +17,9 @@ public class SymbolTable {
         this.table = existingTable;
     }
 
+    public boolean containsIdent(IdentAST identifier) {
+        return table.containsKey(identifier);
+    }
     public AST get(IdentAST identifier) {
         return table.get(identifier);
     }

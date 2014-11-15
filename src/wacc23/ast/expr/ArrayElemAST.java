@@ -7,21 +7,22 @@ import wacc23.type.Type;
 import java.util.List;
 
 public class ArrayElemAST extends ExprAST {
-    private final String identifier;
+    private final IdentAST identifier;
     private final List<ExprAST> indices;
 
-    public ArrayElemAST(String identifier, List<ExprAST> indices) {
+    public ArrayElemAST(IdentAST identifier, List<ExprAST> indices) {
         this.identifier = identifier;
         this.indices = indices;
     }
 
     @Override
-    public void check(SymbolTable funcSymTable, SymbolTable varSymTable) throws SemanticErrorException {
-        super.check(funcSymTable, varSymTable);
+    public void check(SymbolTable funcSymTable, SymbolTable varSymTable)
+            throws SemanticErrorException {
         // check that index is of type int
+        identifier.check(funcSymTable, varSymTable);
     }
 
-    public String getIdentifier() {
+    public IdentAST getIdentifier() {
         return identifier;
     }
 

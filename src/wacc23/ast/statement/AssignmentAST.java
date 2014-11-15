@@ -5,9 +5,6 @@ import wacc23.SymbolTable;
 import wacc23.ast.AssignLhsAST;
 import wacc23.ast.assignRhs.AssignRhsAST;
 
-/**
- * Created by Anton A.
- */
 public class AssignmentAST extends StatementAST {
     private final AssignLhsAST lhs;
     private final AssignRhsAST rhs;
@@ -20,6 +17,11 @@ public class AssignmentAST extends StatementAST {
     @Override
     public void check(SymbolTable funcSymTable, SymbolTable varSymTable)
             throws SemanticErrorException {
-        // TODO: Check types are equivalent
+        if (!lhs.getType().equals(rhs.getType())) {
+            throw new SemanticErrorException("LHS of assignment does not " +
+                    "match type of RHS.");
+        }
+        lhs.check(funcSymTable, varSymTable);
+        rhs.check(funcSymTable, varSymTable);
     }
 }

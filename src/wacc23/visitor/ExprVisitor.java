@@ -14,7 +14,8 @@ public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
             int i = Integer.parseInt(ctx.getText());
             return new IntAST(i);
         } catch (NumberFormatException e) {
-            throw new NumberFormatException("Incorrect number format supplied. Possible integer overflow.");
+            throw new NumberFormatException("Incorrect number format " +
+                    "supplied. Possible integer overflow.");
         }
     }
 
@@ -26,7 +27,8 @@ public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
     @Override
     public ExprAST visitChar(@NotNull WaccParser.CharContext ctx) {
         if (ctx.CHAR_LITER().getText().length() > 1) {
-            throw new IllegalArgumentException("Looking for char, but found string.");
+            throw new IllegalArgumentException(
+                    "Looking for char, but found string.");
         }
         return new CharAST(ctx.CHAR_LITER().getText().charAt(0));
     }
@@ -42,17 +44,14 @@ public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
     }
 
     @Override
-    public ExprAST visitIdent(@NotNull WaccParser.IdentContext ctx) {
-        return new IdentAST(ctx.IDENT().getText());
+    public ExprAST visitArrayElemExpr(
+            @NotNull WaccParser.ArrayElemExprContext ctx) {
+        return new ArrayElemVisitor().visitArrayElemExpr(ctx);
     }
 
     @Override
-    public ExprAST visitArrayElemExpr(@NotNull WaccParser.ArrayElemExprContext ctx) {
-        List<ExprAST> indicies = new ArrayList<>();
-        for (WaccParser.ExprContext exprCtx : ctx.arrayElem().expr()) {
-            indicies.add(visit(exprCtx));
-        }
-        return new ArrayElemAST(ctx.arrayElem().IDENT().getText(), indicies);
+    public ExprAST visitIdent(@NotNull WaccParser.IdentContext ctx) {
+        return new IdentVisitor().visitIdent(ctx.IDENT());
     }
 
     @Override
