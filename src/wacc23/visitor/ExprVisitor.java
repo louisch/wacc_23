@@ -35,7 +35,7 @@ public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
 
     @Override
     public ExprAST visitPair(@NotNull WaccParser.PairContext ctx) {
-        return super.visitPair(ctx);
+        return new NullAST();
     }
 
     @Override
