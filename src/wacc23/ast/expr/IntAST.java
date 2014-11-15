@@ -1,6 +1,7 @@
-package wacc23.ast;
+package wacc23.ast.expr;
 
 import wacc23.SemanticErrorException;
+import wacc23.ast.expr.ExprAST;
 import wacc23.ast.type.BaseTypeAST;
 import wacc23.ast.type.TypeAST;
 

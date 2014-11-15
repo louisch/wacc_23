@@ -2,8 +2,8 @@ package wacc23.visitor;
 
 import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
-import wacc23.ast.ArrayElemAST;
-import wacc23.ast.ExprAST;
+import wacc23.ast.expr.ArrayElemAST;
+import wacc23.ast.expr.ExprAST;
 
 import java.util.LinkedList;
 import java.util.List;

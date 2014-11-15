@@ -1,5 +1,6 @@
-package wacc23.ast;
+package wacc23.ast.expr;
 
+import wacc23.ast.AST;
 import wacc23.ast.type.TypeAST;
 
 public abstract class ExprAST extends AST {

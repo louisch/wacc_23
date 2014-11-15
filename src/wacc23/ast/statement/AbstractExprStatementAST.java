@@ -1,27 +1,22 @@
-package wacc23.ast;
+package wacc23.ast.statement;
 
 import wacc23.SemanticErrorException;
 import wacc23.ast.expr.ExprAST;
+import wacc23.ast.statement.StatementAST;
 
 /**
  * Created by Anton A.
  */
-public class PairElemAST extends AST {
-    private final boolean isFirst;
+public abstract class AbstractExprStatementAST extends StatementAST {
     private final ExprAST expr;
 
-    public PairElemAST(boolean isFirst, ExprAST expr) {
-        this.isFirst = isFirst;
+    public AbstractExprStatementAST(ExprAST expr) {
         this.expr = expr;
     }
 
     @Override
     public void check() throws SemanticErrorException {
         expr.check();
-    }
-
-    public boolean isFirst() {
-        return isFirst;
     }
 
     public ExprAST getExpr() {

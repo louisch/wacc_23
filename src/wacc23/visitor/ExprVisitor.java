@@ -3,8 +3,8 @@ package wacc23.visitor;
 import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTree;
-import wacc23.ast.ExprAST;
-import wacc23.ast.IntAST;
+import wacc23.ast.expr.ExprAST;
+import wacc23.ast.expr.IntAST;
 
 public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
     @Override
