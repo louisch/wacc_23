@@ -4,11 +4,19 @@ import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
 import wacc23.ast.*;
 import wacc23.ast.assignRhs.AssignRhsAST;
+import wacc23.ast.statement.AssignmentAST;
 import wacc23.ast.statement.DeclarationAST;
 import wacc23.ast.statement.StatementAST;
 import wacc23.ast.statement.StatementsAST;
 
 public class StatementVisitor extends ParseTreeVisitor<StatementAST> {
+
+    @Override
+    public StatementAST visitAssignment(@NotNull WaccParser.AssignmentContext ctx) {
+        AssignLhsAST lhs = new AssignLhsVisitor().visitAssignLhs(ctx.assignLhs());
+        AssignRhsAST rhs = new AssignRhsVisitor().visitAssignRhs(ctx.assignRhs());
+        return new AssignmentAST(lhs, rhs);
+    }
 
     @Override
     public StatementAST visitDeclaration(@NotNull WaccParser.DeclarationContext ctx) {
