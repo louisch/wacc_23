@@ -11,8 +11,20 @@ import wacc23.ast.type.TypeAST;
 public class TypeVisitor extends ParseTreeVisitor<TypeAST> {
     @Override
     public TypeAST visit(@NotNull ParseTree tree) {
-        // TODO
-        return super.visit(tree);
+        if (tree instanceof WaccParser.TypeContext) {
+            WaccParser.TypeContext ctx = (WaccParser.TypeContext) tree;
+            if (ctx.arrayType() != null) {
+                return visitArrayType(ctx.arrayType());
+            } else if (ctx.baseType() != null) {
+                return visitBaseType(ctx.baseType());
+            } else if (ctx.pairType() != null) {
+                return visitPairType(ctx.pairType());
+            } else {
+                throw new IllegalArgumentException("No context found for TypeContext");
+            }
+        } else {
+            throw new IllegalArgumentException("TypeVisitor: non-type found where type expected.");
+        }
     }
 
     @Override
