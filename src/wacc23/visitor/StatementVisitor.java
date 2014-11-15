@@ -44,11 +44,6 @@ public class StatementVisitor extends ParseTreeVisitor<StatementAST> {
     }
 
     @Override
-    public StatementAST visitRet(@NotNull WaccParser.RetContext ctx) {
-        return new ReturnAST(new ExprVisitor().visit(ctx.expr()));
-    }
-
-    @Override
     public StatementAST visitExit(@NotNull WaccParser.ExitContext ctx) {
         return new ExitAST(new ExprVisitor().visit(ctx.expr()));
     }

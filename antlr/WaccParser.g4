@@ -6,18 +6,20 @@ options {
 
 program : BEGIN (func)* stat END ;
 
-func : type IDENT OPEN_PARENTHESES (paramList)? CLOSE_PARENTHESES IS stat END;
+func : type IDENT OPEN_PARENTHESES (paramList)? CLOSE_PARENTHESES IS
+       stat? ret END;
 
 paramList : param ( COMMA param )* ;
 
 param : type IDENT ;
+
+ret : RET expr ;
 
 stat : SKIP  # skip
   | type IDENT ASSIGN assignRhs  # declaration
   | assignLhs ASSIGN  assignRhs  # assignment
   | READ assignLhs  # read
   | FREE expr  # free
-  | RET expr  # ret
   | EXIT expr  # exit
   | PRINT expr  # print
   | PRINTLN expr  # println

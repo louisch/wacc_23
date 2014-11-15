@@ -1,7 +1,5 @@
 package wacc23.ast.statement;
 
-import wacc23.ast.AST;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,20 +11,6 @@ public class StatementsAST extends StatementAST {
         statements = new ArrayList<>();
         addToStatements(statement0);
         addToStatements(statement1);
-    }
-
-    /**
-     * If this statement represents two or more statements, get the very last.
-     *
-     * Statements can be two statements nested inside one. This resembles a tree
-     * structure. For any given statement, this returns the statement
-     * furthest to the 'right' of the statement tree.
-     */
-    public AST lastStatement() {
-        if (!statements.isEmpty()) {
-            return null;
-        }
-        return statements.get(statements.size() - 1);
     }
 
     /**

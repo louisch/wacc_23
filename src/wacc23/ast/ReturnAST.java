@@ -1,11 +1,8 @@
-package wacc23.ast.statement;
+package wacc23.ast;
 
 import wacc23.ast.expr.ExprAST;
 
-/**
- * Created by Anton A.
- */
-public class ReturnAST extends StatementAST {
+public class ReturnAST extends AST {
 
     private final ExprAST expr;
 
