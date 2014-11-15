@@ -8,9 +8,6 @@ import wacc23.ast.expr.ExprAST;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by Anton A.
- */
 public class ArrayElemVisitor extends ParseTreeVisitor<ArrayElemAST> {
     @Override
     public ArrayElemAST visitArrayElem(@NotNull WaccParser.ArrayElemContext ctx) {
