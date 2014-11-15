@@ -107,7 +107,7 @@ IDENT : ( ALPHA | UNDERSCORE ) ( ALPHANUM | UNDERSCORE )* ;
 
 // skipped tokens
 COMMENT : '#' .*? '\n' -> skip ;
-WS : [ \n\f]+ -> skip ;
+WS : [ \n\f\t]+ -> skip ;
 /* note that neither \t or any other whitespace (e.g. \r)
  * are not taken into account here as they are not part of the spec
  */
