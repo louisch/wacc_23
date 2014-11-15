@@ -1,7 +1,6 @@
 package wacc23.ast.statement;
 
 import wacc23.SemanticErrorException;
-import wacc23.SymbolTable;
 
 public class BlockAST extends StatementAST {
     private final StatementAST stat;
@@ -11,8 +10,8 @@ public class BlockAST extends StatementAST {
     }
 
     @Override
-    public void check(SymbolTable funcSymTable, SymbolTable varSymTable) throws SemanticErrorException {
-        stat.check(funcSymTable, varSymTable);
+    public void check() throws SemanticErrorException {
+        stat.check();
     }
 
     public StatementAST getStat() {

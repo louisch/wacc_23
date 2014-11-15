@@ -1,7 +1,6 @@
 package wacc23.ast;
 
 import wacc23.SemanticErrorException;
-import wacc23.SymbolTable;
 import wacc23.ast.statement.StatementAST;
 import wacc23.type.Type;
 
@@ -29,13 +28,13 @@ public class FunctionAST extends AST {
     }
 
     @Override
-    public void check(SymbolTable funcSymTable, SymbolTable varSymTable)
+    public void check()
             throws SemanticErrorException {
         if (body != null) {
-            body.check(funcSymTable, varSymTable);
+            body.check();
         }
         for (ParamAST p : params) {
-            p.check(funcSymTable, varSymTable);
+            p.check();
         }
     }
 

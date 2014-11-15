@@ -1,7 +1,6 @@
 package wacc23.ast.statement;
 
 import wacc23.SemanticErrorException;
-import wacc23.SymbolTable;
 import wacc23.ast.AssignLhsAST;
 import wacc23.ast.assignRhs.AssignRhsAST;
 
@@ -15,13 +14,13 @@ public class AssignmentAST extends StatementAST {
     }
 
     @Override
-    public void check(SymbolTable funcSymTable, SymbolTable varSymTable)
+    public void check()
             throws SemanticErrorException {
         if (!lhs.getType().equals(rhs.getType())) {
             throw new SemanticErrorException("LHS of assignment does not " +
                     "match type of RHS.");
         }
-        lhs.check(funcSymTable, varSymTable);
-        rhs.check(funcSymTable, varSymTable);
+        lhs.check();
+        rhs.check();
     }
 }

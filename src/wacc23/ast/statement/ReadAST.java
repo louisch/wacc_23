@@ -1,7 +1,6 @@
 package wacc23.ast.statement;
 
 import wacc23.SemanticErrorException;
-import wacc23.SymbolTable;
 import wacc23.ast.AssignLhsAST;
 
 /**
@@ -15,9 +14,9 @@ public class ReadAST extends StatementAST {
     }
 
     @Override
-    public void check(SymbolTable funcSymTable, SymbolTable varSymTable)
+    public void check()
             throws SemanticErrorException {
-        lhs.check(funcSymTable, varSymTable);
+        lhs.check();
     }
 
     public AssignLhsAST getLhs() {

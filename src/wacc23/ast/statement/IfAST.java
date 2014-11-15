@@ -1,7 +1,6 @@
 package wacc23.ast.statement;
 
 import wacc23.SemanticErrorException;
-import wacc23.SymbolTable;
 import wacc23.ast.expr.ExprAST;
 
 import java.util.List;
@@ -18,10 +17,10 @@ public class IfAST extends StatementAST {
     }
 
     @Override
-    public void check(SymbolTable funcSymTable, SymbolTable varSymTable)
+    public void check()
             throws SemanticErrorException {
         for (StatementAST s : stats) {
-            s.check(funcSymTable, varSymTable);
+            s.check();
         }
     }
 

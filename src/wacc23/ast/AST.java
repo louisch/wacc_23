@@ -12,9 +12,21 @@ import wacc23.type.Type;
  * Used by the compiler to check for semantic errors, as well as a data
  * structure to store the program, so that code may be generated from it.
  */
-public abstract class AST {
-    public void check(SymbolTable funcSymTable,
-                      SymbolTable varSymTable) throws SemanticErrorException {
+public class AST {
+
+    protected SymbolTable funcSymTable;
+    protected SymbolTable varSymTable;
+
+    public AST() {
+        this.funcSymTable = null;
+        this.varSymTable = null;
+    }
+    public AST(SymbolTable funcSymTable, SymbolTable varSymTable) {
+        this.funcSymTable = funcSymTable;
+        this.varSymTable = varSymTable;
+    }
+
+    public void check() throws SemanticErrorException {
     }
 
     public Type getType() {
