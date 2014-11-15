@@ -3,9 +3,6 @@ package wacc23.ast;
 import wacc23.ast.expr.IdentAST;
 import wacc23.type.Type;
 
-/**
- * Created by Anton A.
- */
 public class ParamAST extends AST {
     private final Type type;
     private final IdentAST id;

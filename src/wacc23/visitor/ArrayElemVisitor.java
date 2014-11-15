@@ -9,9 +9,6 @@ import wacc23.ast.expr.IdentAST;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Anton A.
- */
 public class ArrayElemVisitor extends ParseTreeVisitor<ArrayElemAST> {
     @Override
     public ArrayElemAST visitArrayElem(
