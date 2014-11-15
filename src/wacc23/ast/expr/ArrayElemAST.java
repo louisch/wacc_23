@@ -16,8 +16,8 @@ public class ArrayElemAST extends ExprAST {
     }
 
     @Override
-    public void check(SymbolTable funcSymTable, SymbolTable varSymTable) throws SemanticErrorException {
-        super.check(funcSymTable, varSymTable);
+    public void check(SymbolTable funcSymTable, SymbolTable varSymTable)
+            throws SemanticErrorException {
         // check that index is of type int
     }
 
