@@ -1,6 +1,6 @@
 package wacc23.type;
 
-public class ArrayType<T extends Type> extends Type {
+public class ArrayType extends Type {
 
     /**
      * Arrays will either be arrays of arrays of... pairs, or BaseTypes.
@@ -17,7 +17,7 @@ public class ArrayType<T extends Type> extends Type {
      * If an array is given as the inner type, that array's baseType is used,
      * and the depth of this array is set to be that array's depth plus one.
      */
-    public ArrayType(T innerType) {
+    public ArrayType(Type innerType) {
         if (innerType instanceof ArrayType) {
             ArrayType innerTypeAsArray = (ArrayType) innerType;
             this.depth = innerTypeAsArray.depth + 1;
