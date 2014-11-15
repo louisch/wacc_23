@@ -5,13 +5,13 @@ import wacc23.SemanticErrorException;
 /**
  * Created by Anton A.
  */
-public class ArrayElemAST extends AST {
+public class ArrayElemAST extends ExprAST {
     private final String identifier;
-    private final ExpressionAST expressionAST;
+    private final ExprAST exprAST;
 
-    public ArrayElemAST(String identifier, ExpressionAST expressionAST) {
+    public ArrayElemAST(String identifier, ExprAST exprAST) {
         this.identifier = identifier;
-        this.expressionAST = expressionAST;
+        this.exprAST = exprAST;
     }
 
     @Override
@@ -23,7 +23,17 @@ public class ArrayElemAST extends AST {
         return identifier;
     }
 
-    public ExpressionAST getExpressionAST() {
-        return expressionAST;
+    public ExprAST getExprAST() {
+        return exprAST;
+    }
+
+    @Override
+    public TypeAST getType() {
+//        maybe? return ArrayTypeAST.makeArrayElemType(TypeAST *insert type*, int *symtab lookup depth*);
+//        TODO: Should this return ArrayTypeAST or TypeAST or something else?
+//        e.g. int[] a     - the type of a[0] is "int", right? i.e. a BaseTypeAST
+//        e.g. int[][] a   - the type of a[0] is now "int[]" i.e. an ArrayTypeAST
+//        I think this should return a TypeAST, but I'm not sure.
+        return null;
     }
 }
