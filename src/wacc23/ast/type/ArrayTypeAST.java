@@ -1,4 +1,4 @@
-package wacc23.ast;
+package wacc23.ast.type;
 
 import wacc23.utils.RepeatString;
 

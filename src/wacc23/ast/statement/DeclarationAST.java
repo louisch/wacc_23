@@ -3,7 +3,7 @@ package wacc23.ast.statement;
 import wacc23.SemanticErrorException;
 import wacc23.ast.assignRhs.AssignRhsAST;
 import wacc23.ast.IdentAST;
-import wacc23.ast.TypeAST;
+import wacc23.ast.type.TypeAST;
 
 /**
  * Created by Anton A.

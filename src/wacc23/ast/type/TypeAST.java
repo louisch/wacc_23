@@ -1,6 +1,7 @@
-package wacc23.ast;
+package wacc23.ast.type;
 
 import wacc23.SemanticErrorException;
+import wacc23.ast.AST;
 
 public class TypeAST extends AST {
 

@@ -1,4 +1,4 @@
-package wacc23.ast;
+package wacc23.ast.type;
 
 public class BaseTypeAST extends TypeAST {
 

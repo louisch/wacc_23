@@ -2,8 +2,8 @@ package wacc23.visitor;
 
 import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
-import wacc23.ast.BaseTypeAST;
-import wacc23.ast.TypeAST;
+import wacc23.ast.type.BaseTypeAST;
+import wacc23.ast.type.TypeAST;
 
 public class TypeVisitor extends ParseTreeVisitor<TypeAST> {
 

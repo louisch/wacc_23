@@ -1,6 +1,8 @@
-package wacc23.ast;
+package wacc23.ast.type;
 
-public class PairTypeAST extends TypeAST{
+import wacc23.ast.type.TypeAST;
+
+public class PairTypeAST extends TypeAST {
 
     private final String fst;
     private final String snd;

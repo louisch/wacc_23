@@ -8,6 +8,7 @@ import wacc23.ast.statement.AssignmentAST;
 import wacc23.ast.statement.DeclarationAST;
 import wacc23.ast.statement.StatementAST;
 import wacc23.ast.statement.StatementsAST;
+import wacc23.ast.type.TypeAST;
 
 public class StatementVisitor extends ParseTreeVisitor<StatementAST> {
 

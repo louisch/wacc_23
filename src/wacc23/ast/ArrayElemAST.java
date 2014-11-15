@@ -1,6 +1,7 @@
 package wacc23.ast;
 
 import wacc23.SemanticErrorException;
+import wacc23.ast.type.TypeAST;
 
 import java.util.List;
 

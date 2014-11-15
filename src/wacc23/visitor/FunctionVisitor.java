@@ -4,7 +4,7 @@ import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
 import wacc23.ast.FunctionAST;
 import wacc23.ast.statement.StatementAST;
-import wacc23.ast.TypeAST;
+import wacc23.ast.type.TypeAST;
 
 public class FunctionVisitor extends ParseTreeVisitor<FunctionAST> {
 

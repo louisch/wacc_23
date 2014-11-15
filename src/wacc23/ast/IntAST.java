@@ -1,6 +1,8 @@
 package wacc23.ast;
 
 import wacc23.SemanticErrorException;
+import wacc23.ast.type.BaseTypeAST;
+import wacc23.ast.type.TypeAST;
 
 public class IntAST extends ExprAST {
 
