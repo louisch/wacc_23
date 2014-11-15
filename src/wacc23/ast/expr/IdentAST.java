@@ -1,11 +1,8 @@
-package wacc23.ast;
+package wacc23.ast.expr;
 
 import wacc23.SemanticErrorException;
 
-/**
- * Created by Anton A.
- */
-public class IdentAST extends AST {
+public class IdentAST extends ExprAST {
     private final String identifier;
 
     public IdentAST(String identifier) {
