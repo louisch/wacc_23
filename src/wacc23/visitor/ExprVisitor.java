@@ -41,13 +41,13 @@ public class ExprVisitor extends ParseTreeVisitor<ExprAST> {
 
     @Override
     public ExprAST visitIdent(@NotNull WaccParser.IdentContext ctx) {
-//        return super.visitIdent(ctx);
-        return new IdentAST(ctx.getText());
+        return new IdentAST(ctx.IDENT().getText());
     }
 
     @Override
     public ExprAST visitArrayElemExpr(@NotNull WaccParser.ArrayElemExprContext ctx) {
         return super.visitArrayElemExpr(ctx);
+//        return new ArrayElemAST(ctx.)
     }
 
     @Override
