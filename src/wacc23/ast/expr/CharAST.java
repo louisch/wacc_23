@@ -1,11 +1,9 @@
 package wacc23.ast.expr;
 
-import wacc23.ast.type.BaseTypeAST;
-import wacc23.ast.type.TypeAST;
+import wacc23.type.BaseType;
+import wacc23.type.BaseTypeValue;
+import wacc23.type.Type;
 
-/**
- * Created by Anton A.
- */
 public class CharAST extends ExprAST {
     private final char c;
 
@@ -14,7 +12,7 @@ public class CharAST extends ExprAST {
     }
 
     @Override
-    public TypeAST getType() {
-        return BaseTypeAST.makeCharType();
+    public Type getType() {
+        return new BaseType(BaseTypeValue.CHAR);
     }
 }

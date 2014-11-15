@@ -1,16 +1,16 @@
 package wacc23.ast;
 
 import wacc23.SemanticErrorException;
-import wacc23.ast.type.TypeAST;
+import wacc23.type.Type;
 
 /**
  * Created by Anton A.
  */
 public class ParamAST extends AST {
-    private final TypeAST type;
+    private final Type type;
     private final IdentAST id;
 
-    public ParamAST(TypeAST type, IdentAST id) {
+    public ParamAST(Type type, IdentAST id) {
         this.type = type;
         this.id = id;
     }
@@ -20,7 +20,7 @@ public class ParamAST extends AST {
         type.check();
     }
 
-    public TypeAST getType() {
+    public Type getType() {
         return type;
     }
 

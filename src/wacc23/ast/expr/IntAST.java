@@ -1,25 +1,19 @@
 package wacc23.ast.expr;
 
-import wacc23.SemanticErrorException;
-import wacc23.ast.expr.ExprAST;
-import wacc23.ast.type.BaseTypeAST;
-import wacc23.ast.type.TypeAST;
+import wacc23.type.BaseType;
+import wacc23.type.BaseTypeValue;
+import wacc23.type.Type;
 
 public class IntAST extends ExprAST {
 
-    int value;
+    private final int value;
 
     public IntAST(int value) {
         this.value = value;
     }
 
     @Override
-    public void check() throws SemanticErrorException {
-        super.check(); // one does not simply semantic check an int
-    }
-
-    @Override
-    public TypeAST getType() {
-        return BaseTypeAST.makeIntType();
+    public Type getType() {
+        return new BaseType(BaseTypeValue.INT);
     }
 }

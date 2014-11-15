@@ -1,14 +1,10 @@
 package wacc23.ast.expr;
 
 import wacc23.SemanticErrorException;
-import wacc23.ast.expr.ExprAST;
-import wacc23.ast.type.TypeAST;
+import wacc23.type.Type;
 
 import java.util.List;
 
-/**
- * Created by Anton A.
- */
 public class ArrayElemAST extends ExprAST {
     private final String identifier;
     private final List<ExprAST> exprAST;
@@ -32,7 +28,7 @@ public class ArrayElemAST extends ExprAST {
     }
 
     @Override
-    public TypeAST getType() {
+    public Type getType() {
 //        maybe? return ArrayTypeAST.makeArrayElemType(TypeAST *insert type*, int *symtab lookup depth*);
 //        TODO: Should this return ArrayTypeAST or TypeAST or something else?
 //        e.g. int[] a     - the type of a[0] is "int", right? i.e. a BaseTypeAST

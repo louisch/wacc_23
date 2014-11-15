@@ -1,11 +1,9 @@
 package wacc23.ast.expr;
 
-import wacc23.ast.type.BaseTypeAST;
-import wacc23.ast.type.TypeAST;
+import wacc23.type.BaseType;
+import wacc23.type.BaseTypeValue;
+import wacc23.type.Type;
 
-/**
- * Created by Anton A.
- */
 public class BoolAST extends ExprAST {
     private final boolean isTrue;
 
@@ -14,8 +12,8 @@ public class BoolAST extends ExprAST {
     }
 
     @Override
-    public TypeAST getType() {
-        return BaseTypeAST.makeBoolType();
+    public Type getType() {
+        return new BaseType(BaseTypeValue.BOOL);
     }
 
     public boolean isTrue() {

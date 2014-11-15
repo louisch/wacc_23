@@ -2,71 +2,44 @@ package wacc23.visitor;
 
 import antlr.WaccParser;
 import org.antlr.v4.runtime.misc.NotNull;
-import org.antlr.v4.runtime.tree.ParseTree;
-import wacc23.ast.type.ArrayTypeAST;
-import wacc23.ast.type.BaseTypeAST;
-import wacc23.ast.type.PairTypeAST;
-import wacc23.ast.type.TypeAST;
+import wacc23.type.*;
 
-public class TypeVisitor extends ParseTreeVisitor<TypeAST> {
+public class TypeVisitor extends ParseTreeVisitor<Type> {
+
     @Override
-    public TypeAST visit(@NotNull ParseTree tree) {
-        // TODO
-        return super.visit(tree);
+    public Type visitBaseType(@NotNull WaccParser.BaseTypeContext ctx) {
+        if (ctx.BOOL() != null) {
+            return new BaseType(BaseTypeValue.BOOL);
+        } else if(ctx.CHAR() != null) {
+            return new BaseType(BaseTypeValue.CHAR);
+        } else if(ctx.INT() != null) {
+            return new BaseType(BaseTypeValue.INT);
+        } else if(ctx.STRING() != null) {
+            return new BaseType(BaseTypeValue.STRING);
+        } else {
+            throw new IllegalArgumentException("Was given BaseType did not " +
+                "match any of the known BaseTypes.");
+        }
     }
 
     @Override
-    public TypeAST visitBaseType(@NotNull WaccParser.BaseTypeContext ctx) {
-        String type;
-        if(ctx.BOOL() != null){
-            type = ctx.BOOL().getText();
-        }else if(ctx.CHAR() != null){
-            type = ctx.CHAR().getText();
-        }else if(ctx.INT() != null){
-            type = ctx.INT().getText();
-        }else if(ctx.STRING() != null) {
-            type = ctx.STRING().getText();
-        }else{
-            throw new IllegalArgumentException("No context found for BaseType");
-        }
-
-        return new BaseTypeAST(type);
-    }
-
-    @Override
-    public TypeAST visitArrayType(@NotNull WaccParser.ArrayTypeContext ctx) {
-        TypeAST type;
-        int depth = 1;
-        while (ctx.arrayType() != null) {
-            ctx = ctx.arrayType();
-            ++depth;
-        }
+    public Type visitArrayType(@NotNull WaccParser.ArrayTypeContext ctx) {
         if (ctx.baseType() != null) {
-            type = visitBaseType(ctx.baseType());
+            return new ArrayType(visit(ctx.baseType()));
         } else if (ctx.pairType() != null) {
-            type = visitPairType(ctx.pairType());
+            return new ArrayType(visit(ctx.pairType()));
+        } else if (ctx.arrayType() != null) {
+            return new ArrayType(visit(ctx.arrayType()));
         } else {
-            throw new IllegalArgumentException("No context found for ArrayType");
+            throw new IllegalArgumentException("Was given an array type that " +
+                "did not match any of the known array types.");
         }
-        return ArrayTypeAST.makeArrayElemType(type, depth);
     }
 
     @Override
-    public TypeAST visitPairType(@NotNull WaccParser.PairTypeContext ctx) {
-        String fst = getPairType(ctx.pairElemType(0));
-        String snd = getPairType(ctx.pairElemType(1));
-        return new PairTypeAST(fst, snd);
-    }
-
-    private String getPairType(WaccParser.PairElemTypeContext pairElemTypeContext) {
-        if (pairElemTypeContext.PAIR() != null) {
-            return pairElemTypeContext.PAIR().getText();
-        } else if (pairElemTypeContext.baseType() != null) {
-            return new TypeVisitor().visitBaseType(pairElemTypeContext.baseType()).getType();
-        } else if (pairElemTypeContext.arrayType() != null) {
-            return new TypeVisitor().visitArrayType(pairElemTypeContext.arrayType()).getType();
-        } else {
-            throw new IllegalArgumentException("No context found for PairType");
-        }
+    public Type visitPairType(@NotNull WaccParser.PairTypeContext ctx) {
+        Type fst = visit(ctx.pairElemType(0));
+        Type snd = visit(ctx.pairElemType(1));
+        return new PairType(fst, snd);
     }
 }

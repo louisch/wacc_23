@@ -3,17 +3,14 @@ package wacc23.ast.statement;
 import wacc23.SemanticErrorException;
 import wacc23.ast.assignRhs.AssignRhsAST;
 import wacc23.ast.IdentAST;
-import wacc23.ast.type.TypeAST;
+import wacc23.type.Type;
 
-/**
- * Created by Anton A.
- */
 public class DeclarationAST extends StatementAST {
-    private final TypeAST type;
+    private final Type type;
     private final IdentAST identifier;
     private final AssignRhsAST rhs;
 
-    public DeclarationAST(TypeAST type, IdentAST identifier, AssignRhsAST rhs) {
+    public DeclarationAST(Type type, IdentAST identifier, AssignRhsAST rhs) {
         this.type = type;
         this.identifier = identifier;
         this.rhs = rhs;
@@ -24,7 +21,7 @@ public class DeclarationAST extends StatementAST {
         rhs.check();
     }
 
-    public TypeAST getType() {
+    public Type getType() {
         return type;
     }
 

@@ -2,25 +2,25 @@ package wacc23.ast;
 
 import wacc23.SemanticErrorException;
 import wacc23.ast.statement.StatementAST;
-import wacc23.ast.type.TypeAST;
+import wacc23.type.Type;
 
 import java.util.List;
 
 public class FunctionAST extends AST {
 
     private final String identifier;
-    private final TypeAST type;
+    private final Type type;
     private final List<ParamAST> params;
     private final StatementAST body;
 
-    public FunctionAST(String identifier, TypeAST type, StatementAST body) {
+    public FunctionAST(String identifier, Type type, StatementAST body) {
         this.identifier = identifier;
         this.type = type;
         this.params = null;
         this.body = body;
     }
 
-    public FunctionAST(String identifier, TypeAST type, List<ParamAST> params, StatementAST body) {
+    public FunctionAST(String identifier, Type type, List<ParamAST> params, StatementAST body) {
         this.identifier = identifier;
         this.type = type;
         this.params = params;

@@ -8,7 +8,7 @@ import wacc23.ast.IdentAST;
 import wacc23.ast.assignRhs.AssignRhsAST;
 import wacc23.ast.expr.ExprAST;
 import wacc23.ast.statement.*;
-import wacc23.ast.type.TypeAST;
+import wacc23.type.Type;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -35,7 +35,7 @@ public class StatementVisitor extends ParseTreeVisitor<StatementAST> {
 
     @Override
     public StatementAST visitDeclaration(@NotNull WaccParser.DeclarationContext ctx) {
-        TypeAST type = new TypeVisitor().visit(ctx.type());
+        Type type = new TypeVisitor().visit(ctx.type());
         IdentAST identifier = new IdentAST(ctx.IDENT().getText());
         AssignRhsAST rhs = new AssignRhsVisitor().visitAssignRhs(ctx.assignRhs());
         return new DeclarationAST(type, identifier, rhs);
