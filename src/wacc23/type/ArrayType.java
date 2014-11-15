@@ -7,10 +7,17 @@ public class ArrayType extends Type {
      *
      * This variable represents that type. i.e. What the array actually contains
      * at the lowest level.
+     *
+     * This variable may be null, which represents an empty array type, or an
+     * array which only has nested empty arrays.
      */
     private Type arrayBaseType;
     private int depth;
 
+    public ArrayType() {
+        arrayBaseType = null;
+        depth = 0;
+    }
     /**
      * Creates an array of the given innerType.
      *
