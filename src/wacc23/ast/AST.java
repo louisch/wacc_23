@@ -1,6 +1,7 @@
 package wacc23.ast;
 
 import wacc23.SemanticErrorException;
+import wacc23.type.Type;
 
 /**
  * Represents a node of the abstract syntax tree of the program.
@@ -13,5 +14,9 @@ import wacc23.SemanticErrorException;
 public abstract class AST {
     public void check() throws SemanticErrorException {
         throw new UnsupportedOperationException("This AST cannot be checked.");
+    }
+
+    public Type getType() {
+        throw new UnsupportedOperationException("This AST has no type.");
     }
 }
