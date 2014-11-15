@@ -20,6 +20,9 @@ public class AssignmentAST extends StatementAST {
     @Override
     public void check(SymbolTable funcSymTable, SymbolTable varSymTable)
             throws SemanticErrorException {
-        // TODO: Check types are equivalent
+        if (!lhs.getType().equals(rhs.getType())) {
+            throw new SemanticErrorException("LHS of assignment does not " +
+                    "match type of RHS.");
+        }
     }
 }
